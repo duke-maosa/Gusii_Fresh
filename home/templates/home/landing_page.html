@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KisiiFresh - Your Destination for Fresh Agricultural Products</title>
+    <!-- Add CSS stylesheets and JavaScript scripts -->
+</head>
+<body>
+    <header>
+        <!-- Add navigation bar -->
+        <nav>
+            <ul>
+                <li><a href="{% url 'landing_page' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <!-- Add more navigation links as needed -->
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Add main content for the landing page -->
+        <h1>Welcome to KisiiFresh</h1>
+        <p>Your destination for fresh agricultural products.</p>
+        <!-- Add featured products, promotions, etc. -->
+    </main>
+    <footer>
+        <!-- Add footer content -->
+        <p>&copy; 2024 KisiiFresh. All rights reserved.</p>
+    </footer>
+</body>
+</html>

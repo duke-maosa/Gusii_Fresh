@@ -1,0 +1,21 @@
+<!-- support/templates/support/create_ticket.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ticket</title>
+</head>
+<body>
+    <h2>Create Ticket</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br>
+        <button type="submit">Create Ticket</button>
+    </form>
+</body>
+</html>
