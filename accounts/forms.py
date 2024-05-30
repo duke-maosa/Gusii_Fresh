@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .models import CustomUser, CustomUserRating
 
 class RegistrationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
     class Meta:
         model = CustomUser
         fields = ['username', 'password1', 'password2', 'user_type']
