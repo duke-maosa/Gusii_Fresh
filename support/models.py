@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CustomUser
+from account.models import CustomUser
 
 class Ticket(models.Model):
     title = models.CharField(max_length=100)

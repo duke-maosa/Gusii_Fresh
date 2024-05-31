@@ -2,7 +2,7 @@
 
 from django.shortcuts import render
 from products.models import Product
-from accounts.models import CustomUser  # Import the CustomUser model from accounts app
+from account.models import CustomUser  # Import the CustomUser model from account app
 
 def search(request):
     query = request.GET.get('q')

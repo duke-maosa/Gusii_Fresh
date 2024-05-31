@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CustomUser  # Import CustomUser from accounts app
+from account.models import CustomUser  # Import CustomUser from account app
 from products.models import Product
 
 class Review(models.Model):

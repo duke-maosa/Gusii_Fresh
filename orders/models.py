@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CustomUser
+from account.models import CustomUser
 from cart.models import CartItem
 
 class Order(models.Model):

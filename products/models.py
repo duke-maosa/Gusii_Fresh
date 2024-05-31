@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CustomUser  # Import CustomUser model from the accounts app
+from account.models import CustomUser  # Import CustomUser model from the account app
 
 class Product(models.Model):
     name = models.CharField(max_length=255)

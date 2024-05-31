@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CustomUser
+from account.models import CustomUser
 
 class CustomUserInteraction(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

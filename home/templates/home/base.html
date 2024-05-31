@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'home/css/styles.css' %}" rel="stylesheet">
+    <title>{% block title %}Gusii Fresh{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="{% url 'landing_page' %}" class="navbar-brand">Gusii Fresh</a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'landing_page' %}">Home</a></li>
+                    <li><a href="{% url 'about_us' %}">About Us</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gusii Fresh. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="{% static 'home/js/scripts.js' %}"></script>
+</body>
+</html>
