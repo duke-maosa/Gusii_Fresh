@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.db.models import Avg  # Import Avg aggregate function
+from django.db.models import Avg
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, UserRatingForm
 
@@ -13,7 +13,7 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, 'Registration successful.')
-            return redirect('landing_page')  # Redirect to the landing page
+            return redirect('home:landing_page')  # Redirect to the landing page
     else:
         form = RegistrationForm()
     return render(request, 'account/register.html', {'form': form})
@@ -40,7 +40,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     messages.success(request, 'Logout successful.')
-    return redirect('login')  # Redirect to the login page
+    return redirect('home:landing_page')  # Redirect to the landing page
 
 @login_required
 def profile(request):
@@ -58,7 +58,6 @@ def rate_user(request, user_id):
                 rated_by=request.user,
                 defaults={'score': rating}
             )
-            # Update the overall rating of the user
             all_ratings = CustomUserRating.objects.filter(user=user_to_rate)
             average_rating = all_ratings.aggregate(Avg('score'))['score__avg']
             user_to_rate.rating = average_rating
