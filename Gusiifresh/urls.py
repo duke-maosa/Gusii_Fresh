@@ -20,18 +20,16 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),  # Sets 'home' as the default landing page
-    path('products/', include('products.urls')),
-    path('cart/', include('cart.urls')),
-    path('orders/', include('orders.urls')),
-    path('account/', include('account.urls')),
-    path('payments/', include('payments.urls')),
-    path('search/', include('search.urls', namespace='search')),
-    path('analytics/', include('analytics.urls')),
-    path('marketing/', include('marketing.urls')),
-    path('reviews/', include('reviews.urls')),
-    path('notifications/', include('notifications.urls')),
-    path('security/', include('security.urls')),
-    path('support/', include('support.urls')),
-    
+    path('products/', include(('products.urls', 'products'), namespace='products')), 
+    path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
+    path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
+    path('account/', include(('account.urls', 'account'), namespace='account')),
+    path('payments/', include(('payments.urls', 'payments'), namespace='payments')),
+    path('search/', include(('search.urls', 'search'), namespace='search')),
+    path('analytics/', include(('analytics.urls', 'analytics'), namespace='analytics')),
+    path('marketing/', include(('marketing.urls', 'marketing'), namespace='marketing')),
+    path('reviews/', include(('reviews.urls', 'reviews'), namespace='reviews')),
+    path('notifications/', include(('notifications.urls', 'notifications'), namespace='notifications')),
+    path('security/', include(('security.urls', 'security'), namespace='security')),
+    path('support/', include(('support.urls', 'support'), namespace='support')),
 ]
-

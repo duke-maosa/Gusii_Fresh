@@ -1,24 +1,43 @@
-{% extends '/templates/home/base.html' %}
+{% extends 'home/base.html' %}
 
 {% block title %}About Us - Gusii Fresh{% endblock %}
 
 {% block content %}
 <main>
-    <div class="about-content">
-        <h1>Welcome to Our Kisii-Sourced E-commerce Platform</h1>
+    <div class="about-content container">
+        <h1>Welcome to <span class="highlight">Gusii Fresh</span></h1>
         <p>Revolutionizing Agricultural Trade</p>
-        <p>Nestled in the heart of Kenya's fertile Kisii region, our platform connects small-scale farmers with urban consumers, revolutionizing the way agricultural produce is bought and sold.</p>
 
-        <h2>Efficient Supply Chain</h2>
-        <p>Our mission is to streamline the supply chain, ensuring that fresh, high-quality fruits and vegetables from Kisii reach Kenyan households with efficiency and convenience.</p>
+        <section class="content-section">
+            <div class="image-wrapper">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            </div>
+            <div class="text-wrapper">
+                <h2>Efficient Supply Chain</h2>
+                <p>We streamline the supply chain to deliver fresh, high-quality fruits and vegetables from Kisii to Kenyan households.</p>
+            </div>
+        </section>
 
-        <h2>Connecting Kenyan Farmers from Kisii to Urban Buyers</h2>
-        <p>Our e-commerce platform is dedicated to bridging the gap between the abundant agricultural bounty of Kenya's fertile Kisii region and the growing demand for fresh, high-quality produce in the country's bustling urban centers. Nestled in the lush highlands of southwestern Kenya, the Kisii region is renowned for its diverse and bountiful harvests, producing an array of flavorful fruits, crisp vegetables, and aromatic herbs.</p>
-        <p>Through our user-friendly online marketplace, we empower the hardworking small-scale farmers of Kisii to showcase their seasonal offerings, from juicy tomatoes and leafy kale to succulent mangoes and fragrant passion fruit. Buyers in Nairobi, Mombasa, and beyond can explore this virtual farmers' market, discovering the finest, freshest produce cultivated with care and passion by Kisii's dedicated agriculturalists.</p>
+        <section class="content-section">
+            <div class="text-wrapper">
+                <h2>Connecting Kenyan Farmers to Urban Buyers</h2>
+                <p>Our platform bridges the gap between Kisii's abundant agricultural bounty and the demand for fresh produce in urban centers.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            </div>
+        </section>
 
-        <h2>Abundant Agricultural Produce from Kisii Region</h2>
-        <p>The Kisii region in western Kenya is known for its fertile soil, temperate climate, and abundant rainfall. This creates an ideal environment for a variety of high-quality fruits, vegetables, and cash crops. From vibrant purple cabbages to juicy tomatoes, Kisii offers a wide range of fresh and nutritious produce.</p>
-        <p>Small-scale farmers throughout Kisii meticulously cultivate these agricultural gems, drawing on generations of traditional farming wisdom and a deep reverence for the land. Through sustainable, organic practices, they coax the most flavorful and nutritious yields from the earth, resulting in an abundance of products that are coveted by consumers across Kenya. Whether it's the fragrant, aromatic tea leaves, the vibrant yellow bananas, or the rich, creamy macadamia nuts, the agricultural bounty of Kisii is truly a testament to the region's fertile natural endowments and the hard work of its dedicated farming communities.</p>
+        <section class="content-section">
+            <div class="image-wrapper">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
+            </div>
+            <div class="text-wrapper">
+                <h2>Abundant Agricultural Produce from Kisii</h2>
+                <p>Kisii's fertile soil and temperate climate yield a variety of high-quality fruits, vegetables, and cash crops.</p>
+            </div>
+        </section>
+        
     </div>
 </main>
 {% endblock %}

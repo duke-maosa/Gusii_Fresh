@@ -1,18 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-</head>
-<body>
-    <h1>Cart</h1>
-    <ul>
+{% extends 'base.html' %}
+
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+<h2>Your Cart</h2>
+{% if cart_items %}
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
         {% for item in cart_items %}
-            <li>{{ item.product.name }} - {{ item.product.price }} - Quantity: {{ item.quantity }}</li>
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>
+                <form action="{% url 'cart:update_cart' item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td>${{ item.total_price }}</td>
+            <td>
+                <form action="{% url 'cart:remove_from_cart' item.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
         {% endfor %}
-    </ul>
-    <p>Total Cost: {{ total_cost }}</p>
-    <!-- Add checkout button and other cart operations -->
-</body>
-</html>
+    </table>
+    <p>Total Cost: ${{ total_cost }}</p>
+    <a href="{% url 'checkout' %}">Proceed to Checkout</a>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}

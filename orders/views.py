@@ -1,49 +1,51 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 from .models import Order
 from cart.models import CartItem
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def order_processing(request, action, order_id=None):
-    if action == 'checkout':
-        if request.method == 'POST':
-            # Logic to handle the checkout process
-            # Retrieve cart items for the current user
+def order_processing(request):
+    # This view handles different actions based on the POST data
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'checkout':
+            # Logic for handling the checkout process
             cart_items = CartItem.objects.filter(user=request.user)
-            # Calculate total cost
+            if not cart_items.exists():
+                messages.warning(request, "Your cart is empty. Please add some items.")
+                return redirect('view_cart')
             total_cost = sum(item.product.price * item.quantity for item in cart_items)
-            # Create order and save it
             order = Order.objects.create(user=request.user, total_cost=total_cost)
             order.items.set(cart_items)
-            # Clear the user's cart
             cart_items.delete()
             return redirect('order_confirmation', order_id=order.id)
         else:
-            # Retrieve cart items for the current user
-            cart_items = CartItem.objects.filter(user=request.user)
-            total_cost = sum(item.product.price * item.quantity for item in cart_items)
-            return render(request, 'orders/checkout.html', {'cart_items': cart_items, 'total_cost': total_cost})
-    
-    elif action == 'details':
-        order = Order.objects.get(id=order_id, user=request.user)
-        return render(request, 'orders/order_details.html', {'order': order})
-    
-    elif action == 'tracking':
-        # Logic to retrieve tracking information for the order
-        return render(request, 'orders/order_tracking.html', {'order_id': order_id})
-    
-    elif action == 'cancel':
-        order = Order.objects.get(id=order_id, user=request.user)
-        if order.is_completed:
-            # Order has already been processed, cannot be canceled
-            # You might want to provide feedback to the user
+            # Handle other actions if necessary
             pass
-        else:
-            # Cancel the order and provide feedback to the user
-            order.delete()  # Or update order status as canceled
-            pass
-        return redirect('order_history')
-
     else:
-        # Invalid action, handle accordingly
-        pass
+        # Redirect to the checkout page if the request method is GET
+        cart_items = CartItem.objects.filter(user=request.user)
+        total_cost = sum(item.product.price * item.quantity for item in cart_items)
+        return render(request, 'orders/checkout.html', {'cart_items': cart_items, 'total_cost': total_cost})
+
+@login_required
+def order_details(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'orders/order_details.html', {'order': order})
+
+@login_required
+def order_tracking(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    tracking_id = order.tracking_id  # Assume there's a tracking_id field in the Order model
+    return render(request, 'orders/order_tracking.html', {'order_id': order_id, 'tracking_id': tracking_id})
+
+@login_required
+def cancel_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    if order.is_completed:
+        messages.error(request, "This order has already been processed and cannot be canceled.")
+    else:
+        order.delete()  # Or update order status as canceled
+        messages.success(request, "Order canceled successfully.")
+    return redirect('order_history')
