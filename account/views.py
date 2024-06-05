@@ -13,7 +13,7 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, 'Registration successful.')
-            return redirect('home:landing_page')  # Redirect to the landing page
+            return redirect('home:index')  # Redirect to the landing page
     else:
         form = RegistrationForm()
     return render(request, 'account/register.html', {'form': form})
@@ -29,7 +29,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Login successful.')
-                return redirect('home:landing_page')  # Redirect to the landing page
+                return redirect('home:kisii-fresh-st35s84/index')  # Redirect to the landing page
             else:
                 messages.error(request, 'Invalid username or password.')
     else:
@@ -40,7 +40,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     messages.success(request, 'Logout successful.')
-    return redirect('home:landing_page')  # Redirect to the landing page
+    return redirect('home:index')  # Redirect to the landing page
 
 @login_required
 def profile(request):

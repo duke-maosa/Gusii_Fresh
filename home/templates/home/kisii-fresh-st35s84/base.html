@@ -11,10 +11,10 @@
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="{% url 'home:landing_page' %}" class="navbar-brand">Gusii Fresh</a>
+                <a href="{% url 'home:index' %}" class="navbar-brand">Gusii Fresh</a>
                 <ul class="nav-links">
-                    <li><a href="{% url 'home:landing_page' %}">Home</a></li>
-                    <li><a href="{% url 'home:about_us' %}">About Us</a></li>
+                    <li><a href="{% url 'home:index' %}">Home</a></li>
+                    <li><a href="{% url 'home:home' %}">About Us</a></li>
                     <li><a href="{% url 'products:products' %}">Products</a></li>
                     <li><a href="{% url 'cart:view_cart' %}">Cart</a></li>
                     <li><a href="{% url 'orders:order_processing' %}">Orders</a></li>
