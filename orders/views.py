@@ -3,6 +3,10 @@ from django.contrib import messages
 from .models import Order
 from cart.models import CartItem
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
+
+
 
 @login_required
 def order_processing(request):
@@ -28,6 +32,10 @@ def order_processing(request):
         cart_items = CartItem.objects.filter(user=request.user)
         total_cost = sum(item.product.price * item.quantity for item in cart_items)
         return render(request, 'orders/checkout.html', {'cart_items': cart_items, 'total_cost': total_cost})
+
+    # Add a default return statement in case the request method is POST
+    return HttpResponse("Order is being processed")
+
 
 @login_required
 def order_details(request, order_id):

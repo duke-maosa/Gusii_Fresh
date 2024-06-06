@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'home/base.html' %}
 
 {% block title %}Your Cart{% endblock %}
 
@@ -33,7 +33,7 @@
         {% endfor %}
     </table>
     <p>Total Cost: ${{ total_cost }}</p>
-    <a href="{% url 'checkout' %}">Proceed to Checkout</a>
+    <a href="{% url 'cart:view_cart' %}">Proceed to Checkout</a>
 {% else %}
     <p>Your cart is empty.</p>
 {% endif %}
