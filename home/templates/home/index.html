@@ -6,7 +6,7 @@
 <div class="hero">
     <h1>Welcome to Gusii Fresh</h1>
     <p>Fresh produce delivered from Kisii region to your doorstep.</p>
-    <a href="{% url 'products:products' %}" class="button">Shop Now</a>
+    <a href="{% url 'products:product_list' %}" class="button">Shop Now</a>
     <a href="{% url 'home:home' %}" class="button">Learn More</a>
 </div>
 
@@ -26,6 +26,21 @@
         <img src="{% static 'home/images/delivery.jpg' %}" alt="Fast Delivery">
         <h3>Fast Delivery</h3>
         <p>Enjoy fast and reliable delivery service to your doorstep.</p>
+    </div>
+</div>
+
+<div class="product-list">
+    <h2>Featured Products</h2>
+    <div class="products">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p class="price">${{ product.price }}</p>
+            <a href="{% url 'products:product_detail' product.id %}" class="button">View Product</a>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

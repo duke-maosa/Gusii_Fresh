@@ -14,8 +14,7 @@
                 <a href="{% url 'home:index' %}" class="navbar-brand">Gusii Fresh</a>
                 <ul class="nav-links">
                     <li><a href="{% url 'home:index' %}">Home</a></li>
-                    <li><a href="{% url 'home:home' %}">About Us</a></li>
-                    <li><a href="{% url 'products:products' %}">Products</a></li>
+                    <li><a href="{% url 'products:product_list' %}">Products</a></li>
                     <li><a href="{% url 'cart:view_cart' %}">Cart</a></li>
                     <li><a href="{% url 'orders:order_processing' %}">Orders</a></li>
                     {% if user.is_authenticated %}
@@ -25,6 +24,12 @@
                         <li><a href="{% url 'account:user_login' %}">Login</a></li>
                         <li><a href="{% url 'account:register' %}">Register</a></li>
                     {% endif %}
+                    <li>
+                        <form action="{% url 'search:search' %}" method="get">
+                            <input type="text" name="q" placeholder="Search...">
+                            <button type="submit">Search</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </nav>
