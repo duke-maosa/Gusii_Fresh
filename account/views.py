@@ -29,7 +29,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Login successful.')
-                return redirect('home:kisii-fresh-st35s84/index')  # Redirect to the landing page
+                return redirect('home:home/index')  # Redirect to the landing page
             else:
                 messages.error(request, 'Invalid username or password.')
     else:

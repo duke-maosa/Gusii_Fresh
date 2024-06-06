@@ -1,0 +1,31 @@
+{% extends "home/base.html" %}
+
+{% block title %}Welcome to Gusii Fresh{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Welcome to Gusii Fresh</h1>
+    <p>Fresh produce delivered from Kisii region to your doorstep.</p>
+    <a href="{% url 'products:products' %}" class="button">Shop Now</a>
+    <a href="{% url 'home:home' %}" class="button">Learn More</a>
+</div>
+
+<div class="features">
+    <h2>Our Features</h2>
+    <div class="feature">
+        <img src="{% static 'home/images/farmers.jpg' %}" alt="Meet Our Farmers">
+        <h3>Meet Our Farmers</h3>
+        <p>Get to know the hardworking farmers behind our fresh produce.</p>
+    </div>
+    <div class="feature">
+        <img src="{% static 'home/images/fresh_produce.jpg' %}" alt="Fresh Produce">
+        <h3>Quality Fresh Produce</h3>
+        <p>We offer a variety of fresh, organic fruits and vegetables.</p>
+    </div>
+    <div class="feature">
+        <img src="{% static 'home/images/delivery.jpg' %}" alt="Fast Delivery">
+        <h3>Fast Delivery</h3>
+        <p>Enjoy fast and reliable delivery service to your doorstep.</p>
+    </div>
+</div>
+{% endblock %}

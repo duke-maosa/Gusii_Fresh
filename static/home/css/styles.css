@@ -1,10 +1,10 @@
-/* Base Styles */
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #123332;
-  color: #ef9c82;
   margin: 0;
   padding: 0;
+  background-color: #1f7135cc;
+  color: #441709ff;
 }
 
 .container {
@@ -12,90 +12,107 @@ body {
   margin: 0 auto;
 }
 
-/* Navbar Styles */
+a {
+  text-decoration: none;
+  color: #EF9C82;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .navbar {
-  background-color: #123332;
-  color: #e5e0df;
-  padding: 1rem 0;
+  background-color: #52a46899;
+  padding: 1rem;
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-  color: #ef9c82;
-  text-decoration: none;
+  font-weight: bold;
+  color: #EF9C82;
 }
 
 .nav-links {
-  list-style: none;
+  list-style-type: none;
+  margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: flex-end;
 }
 
 .nav-links li {
-  margin-left: 2rem;
-}
-
-.nav-links a {
-  color: #e5e0df;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.nav-links a:hover {
-  color: #ffd9be;
-}
-
-/* Main Content Styles */
-.landing-content, .about-content {
-  padding: 2rem 0;
-}
-
-.content-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem;
-}
-
-.image-wrapper {
-  flex: 1;
+  display: inline;
   margin-right: 1rem;
 }
 
-.image-wrapper img {
-  max-width: 100%;
-  border-radius: 8px;
+.content {
+  padding: 2rem 0;
 }
 
-.text-wrapper {
-  flex: 1;
-}
-
-.content-section h2 {
-  color: #ef9c82;
-  margin-top: 0;
-}
-
-.content-section p {
-  color: #e5e0df;
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* Footer Styles */
 .footer {
-  background-color: #123332;
-  color: #e5e0df;
-  text-align: center;
+  background-color: #52a46899;
   padding: 1rem 0;
+  color: #EF9C82;
+  text-align: center;
 }
 
-.footer p {
-  margin: 0;
+/* Specific styles for index.html */
+.hero {
+  background-color: #EF9C82;
+  color: #1f7135cc;
+  padding: 4rem 0;
+  text-align: center;
 }
 
-/* Highlight */
-.highlight {
-  color: #ffd9be;
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: #52a46899;
+  color: #EF9C82;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #441709ff;
+}
+
+.features {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.feature {
+  margin-bottom: 2rem;
+}
+
+.feature img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.feature p {
+  font-size: 1.1rem;
 }
