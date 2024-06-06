@@ -1,52 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ product.name }}</title>
-    <link href="{% static 'home/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home/css/product_detail.css' %}">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="container">
-                <a href="{% url 'home:index' %}" class="navbar-brand">Gusii Fresh</a>
-                <ul class="nav-links">
-                    <li><a href="{% url 'home:index' %}">Home</a></li>
-                    <li><a href="{% url 'products:product_list' %}">Products</a></li>
-                    <li><a href="{% url 'cart:view_cart' %}">Cart</a></li>
-                    <li><a href="{% url 'orders:order_processing' %}">Orders</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main class="content">
-        <div class="product-detail">
+    <div class="product-detail">
+        <div class="product-images">
+            <h2>Product Images</h2>
+            <ul>
+                {% for image in product.images.all %}
+                <li><img src="{{ image.image.url }}" alt="{{ product.name }} image"></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="product-info">
             <h1>{{ product.name }}</h1>
-            <div class="product-info">
-                <div class="product-description">
-                    <p><strong>Description:</strong> {{ product.description }}</p>
-                    <p><strong>Price:</strong> ${{ product.price }}</p>
-                </div>
-                <div class="product-images">
-                    <h2>Product Images</h2>
-                    <ul>
-                        {% for image in product.images.all %}
-                            <li><img src="{{ image.image.url }}" alt="{{ product.name }} image"></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+            <p class="description">Description: {{ product.description }}</p>
+            <p class="price">Price: ${{ product.price }}</p>
+            <p class="availability">Available Quantity: {{ product.available_quantity }}</p>
+            <p class="seller">Seller: {{ product.seller }}</p>
+            <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
+            <p class="total-ratings">Total Ratings: {{ product.total_ratings }}</p>
+            <!-- Add more product details as needed -->
+            <!-- You can include more information like product dimensions, weight, etc. -->
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Gusii Fresh. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="{% static 'home/js/scripts.js' %}"></script>
+    </div>
 </body>
 </html>
