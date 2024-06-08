@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'orders',
-    'account',
     'payments',
     'search',
     'analytics',
@@ -50,8 +49,10 @@ INSTALLED_APPS = [
     'home',
     'notifications',
     'security',
-    'support'
-
+    'support',
+    'allauth',
+    'account',
+    'allauth.socialaccount',    
 ]
 
 MIDDLEWARE = [

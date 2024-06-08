@@ -1,3 +1,6 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +14,12 @@
         {% csrf_token %}
         <ul>
             {% for item in cart_items %}
-                <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: {{ item.product.price }}</li>
+                <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.product.price }}</li>
             {% endfor %}
         </ul>
-        <p>Total Cost: {{ total_cost }}</p>
+        <p>Total Cost: ${{ total_cost }}</p>
         <button type="submit">Place Order</button>
     </form>
 </body>
 </html>
+{% endblock %}

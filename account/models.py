@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class CustomUser(AbstractUser):
     USER_TYPES = (
@@ -8,8 +9,7 @@ class CustomUser(AbstractUser):
     )
 
     user_type = models.CharField(max_length=10, choices=USER_TYPES)
-    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.0)
-    rated_by = models.ManyToManyField('self', symmetrical=False, through='CustomUserRating', related_name='received_ratings', blank=True)
+    rating = models.FloatField(default=0.0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     groups = models.ManyToManyField(Group, verbose_name='groups', blank=True, related_name='custom_user_set')
     user_permissions = models.ManyToManyField(Permission, verbose_name='user permissions', blank=True, related_name='custom_user_set')
 
@@ -17,9 +17,10 @@ class CustomUser(AbstractUser):
         return self.username
 
 class CustomUserRating(models.Model):
-    user = models.ForeignKey(CustomUser, related_name='given_ratings', on_delete=models.CASCADE)
-    rated_by = models.ForeignKey(CustomUser, related_name='received_ratings_as_rated_by', on_delete=models.CASCADE)
-    score = models.IntegerField()
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='given_ratings')
+    rated_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='received_ratings_as_rated_by')
+    rating = models.FloatField(validators=[MinValueValidator(1), MaxValueValidator(5)])  # Changed to FloatField
 
     class Meta:
         unique_together = ('user', 'rated_by')
+

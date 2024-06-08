@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Success</title>
-</head>
-<body>
+{% extends 'home/base.html' %}
+
+{% block title %}Payment Success - Gusii Fresh{% endblock %}
+
+{% block content %}
+<div class="container">
     <h1>Payment Successful</h1>
-    <!-- Add any additional information for the user -->
-</body>
-</html>
+    <p>Your payment has been successfully processed. Thank you for your purchase!</p>
+    <p>An email confirmation has been sent to your registered email address with details of your order.</p>
+    <p>If you have any questions or concerns, feel free to contact our customer support team for assistance.</p>
+</div>
+{% endblock %}

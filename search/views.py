@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from products.models import Product
-from account.models import CustomUser
 from django.db.models import Q
+from . models import CustomUser, Product
+from django.shortcuts import render
+
+
 
 def search(request):
     query = request.GET.get('q', '')
@@ -14,7 +15,7 @@ def search(request):
         buyers = CustomUser.objects.filter(user_type='buyer', username__icontains=query)
         
         if order == 'desc':
-            sort_by = '-' + sort_by
+            sort_by = f"-{sort_by}"
         products = products.order_by(sort_by)
 
         context = {

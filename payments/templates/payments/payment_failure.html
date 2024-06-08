@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Failure</title>
-</head>
-<body>
+{% extends 'home/base.html' %}
+
+{% block title %}Payment Failure - Gusii Fresh{% endblock %}
+
+{% block content %}
+<div class="container">
     <h1>Payment Failed</h1>
-    <!-- Add any additional information for the user -->
-</body>
-</html>
+    <p>Unfortunately, your payment could not be processed at this time. Please check your payment details and try again later.</p>
+    <p>If you continue to experience issues, please contact our support team for assistance.</p>
+</div>
+{% endblock %}

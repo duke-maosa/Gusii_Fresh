@@ -1,36 +1,36 @@
 {% extends "home/base.html" %}
 
-{% block title %}Welcome to Gusii Fresh{% endblock %}
+{% block title %}Welcome to Gusii Fresh - Your Ultimate Grocery Destination{% endblock %}
 
 {% block content %}
 <div class="hero">
     <h1>Welcome to Gusii Fresh</h1>
-    <p>Fresh produce delivered from Kisii region to your doorstep.</p>
-    <a href="{% url 'products:product_list' %}" class="button">Shop Now</a>
+    <p>Experience the freshest produce delivered from the heart of Kisii region to your doorstep.</p>
+    <a href="{% url 'products:product_list' %}" class="button">Explore Our Selection</a>
     <a href="{% url 'home:home' %}" class="button">Learn More</a>
 </div>
 
 <div class="features">
-    <h2>Our Features</h2>
+    <h2>Discover Our Features</h2>
     <div class="feature">
         <img src="{% static 'home/images/farmers.jpg' %}" alt="Meet Our Farmers">
         <h3>Meet Our Farmers</h3>
-        <p>Get to know the hardworking farmers behind our fresh produce.</p>
+        <p>Get to know the dedicated farmers who cultivate our fresh produce with care and passion.</p>
     </div>
     <div class="feature">
         <img src="{% static 'home/images/fresh_produce.jpg' %}" alt="Fresh Produce">
         <h3>Quality Fresh Produce</h3>
-        <p>We offer a variety of fresh, organic fruits and vegetables.</p>
+        <p>Indulge in a wide array of premium quality, organic fruits and vegetables, sourced directly from local farms.</p>
     </div>
     <div class="feature">
         <img src="{% static 'home/images/delivery.jpg' %}" alt="Fast Delivery">
-        <h3>Fast Delivery</h3>
-        <p>Enjoy fast and reliable delivery service to your doorstep.</p>
+        <h3>Fast & Reliable Delivery</h3>
+        <p>Enjoy swift and reliable delivery service, ensuring your groceries reach you fresh and on time, every time.</p>
     </div>
 </div>
 
 <div class="product-list">
-    <h2>Featured Products</h2>
+    <h2>Explore Our Featured Products</h2>
     <div class="products">
         {% for product in products %}
         <div class="product-card">

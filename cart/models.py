@@ -12,3 +12,27 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f'{self.product.name} (x{self.quantity})'
+
+    def increase_quantity(self, quantity_increment=1):
+        """
+        Increase the quantity of the cart item by a specified increment.
+        """
+        self.quantity += quantity_increment
+        self.save()
+
+    def decrease_quantity(self, quantity_decrement=1):
+        """
+        Decrease the quantity of the cart item by a specified decrement.
+        """
+        if self.quantity > quantity_decrement:
+            self.quantity -= quantity_decrement
+            self.save()
+        else:
+            self.delete()
+
+    @property
+    def subtotal(self):
+        """
+        Calculate the subtotal for the cart item (price * quantity).
+        """
+        return self.quantity * self.product.price

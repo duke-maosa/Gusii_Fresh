@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Rate {{ user_to_rate.username }}</title>
-</head>
-<body>
-    <h2>Rate {{ user_to_rate.username }}
-        
-    </h2>
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}Rate User - Gusii Fresh{% endblock %}
+
+{% block content %}
+    <h2>Rate User</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Submit Rating</button>
+        <button type="submit">Rate</button>
     </form>
-
-</body>
-</html>
+{% endblock %}

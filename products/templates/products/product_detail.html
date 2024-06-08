@@ -1,33 +1,69 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Product Detail{% endblock %}
+
+{% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ product.name }}</title>
-    <link rel="stylesheet" href="{% static 'home/css/product_detail.css' %}">
-</head>
-<body>
-    <div class="product-detail">
-        <div class="product-images">
-            <h2>Product Images</h2>
-            <ul>
-                {% for image in product.images.all %}
-                <li><img src="{{ image.image.url }}" alt="{{ product.name }} image"></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="product-info">
-            <h1>{{ product.name }}</h1>
-            <p class="description">Description: {{ product.description }}</p>
-            <p class="price">Price: ${{ product.price }}</p>
-            <p class="availability">Available Quantity: {{ product.available_quantity }}</p>
-            <p class="seller">Seller: {{ product.seller }}</p>
-            <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
-            <p class="total-ratings">Total Ratings: {{ product.total_ratings }}</p>
-            <!-- Add more product details as needed -->
-            <!-- You can include more information like product dimensions, weight, etc. -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="product-detail">
+                <div class="product-images">
+                    <h2>Product Images</h2>
+                    <ul>
+                        {% for image in product.images.all %}
+                        <li><img src="{{ image.image.url }}" alt="{{ product.name }} image"></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="product-info">
+                    <h1>{{ product.name }}</h1>
+                    <p class="description">Description: {{ product.description }}</p>
+                    <p class="price">Price: Ksh {{ product.price }}</p>
+                    <p class="availability">Available Quantity: {{ product.available_quantity }}</p>
+                    <p class="seller">Seller: {{ product.seller.username }}</p>
+                    <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
+                    <p class="total-ratings">Total Ratings: {{ product.total_ratings }}</p>
+                    <!-- Add to Cart Form -->
+                    <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" name="quantity" id="quantity" min="1" max="{{ product.available_quantity }}" value="1" required>
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                    <!-- Rate Product Form -->
+                    <h3>Rate this Product</h3>
+                    <form action="{% url 'products:rate_product' product.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="product_rating">Rating:</label>
+                        <select name="rating" id="product_rating" required>
+                            <option value="">Choose a rating</option>
+                            {% for i in 1|to_range:6 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Submit Rating</button>
+                    </form>
+                    <!-- Rate Seller Form -->
+                    <h3>Rate this Seller</h3>
+                    <form action="{% url 'account:rate_user' product.seller.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="seller_rating">Rating:</label>
+                        <select name="rating" id="seller_rating" required>
+                            <option value="">Choose a rating</option>
+                            {% for i in 1|to_range:6 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit">Submit Rating</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'home/css/product_detail.css' %}">
+{% endblock %}

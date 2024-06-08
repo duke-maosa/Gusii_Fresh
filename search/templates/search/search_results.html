@@ -20,41 +20,46 @@
         </form>
     </div>
     
-    <div class="products">
-        <h2>Products</h2>
-        <ul>
-            {% for product in products %}
-                <li>
-                    <a href="{% url 'products:product_detail' product.id %}">
-                        {{ product.name }} - ${{ product.price }}
-                    </a>
-                </li>
-            {% empty %}
-                <li>No products found.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    
-    <div class="sellers">
-        <h2>Sellers</h2>
-        <ul>
-            {% for seller in sellers %}
-                <li>{{ seller.username }}</li>
-            {% empty %}
-                <li>No sellers found.</li>
-            {% endfor %}
-        </ul>
-    </div>
-    
-    <div class="buyers">
-        <h2>Buyers</h2>
-        <ul>
-            {% for buyer in buyers %}
-                <li>{{ buyer.username }}</li>
-            {% empty %}
-                <li>No buyers found.</li>
-            {% endfor %}
-        </ul>
+    <div class="search-results-grid">
+        <div class="products">
+            <h2>Products</h2>
+            <ul>
+                {% for product in products %}
+                    <li>
+                        <a href="{% url 'products:product_detail' product.id %}">
+                            <div class="product-info">
+                                <span class="product-name">{{ product.name }}</span>
+                                <span class="product-price">${{ product.price }}</span>
+                            </div>
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>No products found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="sellers">
+            <h2>Sellers</h2>
+            <ul>
+                {% for seller in sellers %}
+                    <li>{{ seller.username }}</li>
+                {% empty %}
+                    <li>No sellers found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="buyers">
+            <h2>Buyers</h2>
+            <ul>
+                {% for buyer in buyers %}
+                    <li>{{ buyer.username }}</li>
+                {% empty %}
+                    <li>No buyers found.</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,3 +1,10 @@
+{% extends 'home/base.html' %}
+
+{% block title %}
+Order Tracking
+{% endblock %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +14,31 @@
 </head>
 <body>
     <h1>Order Tracking</h1>
-    <p>Order #: {{ order_id }}</p>
-    <!-- Add tracking information here -->
+    
+    <h2>Order #{{ order.id }}</h2>
+    <p>Order Date: {{ order.created_at }}</p>
+    <p>Status: {{ order.get_status_display }}</p>
+    <p>Total Cost: ${{ order.total_cost }}</p>
+    
+    <h3>Shipping Address</h3>
+    <p>{{ order.shipping_address }}</p>
+
+    <h3>Tracking Information</h3>
+    {% if order.tracking_id %}
+        <p>Tracking ID: {{ order.tracking_id }}</p>
+        <p>You can track your order using the tracking ID above on the shipping carrier's website.</p>
+    {% else %}
+        <p>Tracking information is not available yet. Please check back later.</p>
+    {% endif %}
+
+    <h3>Order Items</h3>
+    <ul>
+        {% for item in order.order_items.all %}
+            <li>
+                {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }} - Total: ${{ item.total_price }}
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
+{% endblock %}
