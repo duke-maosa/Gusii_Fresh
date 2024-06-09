@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from products.models import Product
 from .models import CartItem
 
-@login_required
+
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
     total_cost = sum(item.total_price() for item in cart_items)
@@ -17,7 +17,7 @@ def view_cart(request):
         return HttpResponseRedirect(reverse('orders:order_summary', args=[order.id]))
 
     return render(request, 'cart/view_cart.html', {'cart_items': cart_items, 'total_cost': total_cost})
-
+@login_required
 def create_order(user, cart_items):
     from orders.models import Order, OrderItem  # Import within function to avoid circular import
     total_cost = sum(item.total_price() for item in cart_items)
@@ -34,7 +34,7 @@ def create_order(user, cart_items):
 def clear_cart(user):
     CartItem.objects.filter(user=user).delete()
 
-@login_required
+
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     quantity = int(request.POST.get('quantity', 1))
@@ -47,14 +47,13 @@ def add_to_cart(request, product_id):
     messages.success(request, 'Item added to cart successfully.')
     return redirect('cart:view_cart')
 
-@login_required
+
 def remove_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
     cart_item.delete()
     messages.success(request, 'Item removed from cart.')
     return redirect('cart:view_cart')
 
-@login_required
 def update_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
     if request.method == 'POST':

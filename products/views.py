@@ -9,15 +9,15 @@ def product_list(request):
     products = Product.objects.all()
 
     paginator = Paginator(products, 10)
-    page = request.GET.get('page')
+    page_number = request.GET.get('page')
     try:
-        products = paginator.page(page)
+        products_page = paginator.page(page_number)
     except PageNotAnInteger:
-        products = paginator.page(1)
+        products_page = paginator.page(1)
     except EmptyPage:
-        products = paginator.page(paginator.num_pages)
+        products_page = paginator.page(paginator.num_pages)
 
-    return render(request, 'products/product_list.html', {'products': products})
+    return render(request, 'products/product_list.html', {'products': products_page})
 
 @login_required
 def product_detail(request, product_id):

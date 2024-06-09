@@ -6,18 +6,14 @@ from django.db.models import Avg
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, EditProfileForm
 from allauth.socialaccount.models import SocialAccount
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 
-from django.contrib.auth.forms import PasswordChangeForm
-
-from django.contrib.auth.models import AnonymousUser
 
 def render_auth_form(request, form, template_name):
     # Check if user is authenticated before querying SocialAccount
-    social_accounts = []
-    if request.user.is_authenticated:
-        social_accounts = SocialAccount.objects.filter(user=request.user)
+    social_accounts = SocialAccount.objects.filter(user=request.user) if request.user.is_authenticated else []
     return render(request, template_name, {'form': form, 'social_accounts': social_accounts})
+
 
 def register(request):
     if request.method == 'POST':
@@ -50,35 +46,44 @@ def user_login(request):
         form = AuthenticationForm()
     return render_auth_form(request, form, 'account/login.html')
 
+
 @login_required
 def user_logout(request):
     logout(request)
     messages.success(request, 'Logout successful.')
     return redirect('home:index')
 
+
 @login_required
 def profile(request):
     user_ratings, _ = CustomUserRating.objects.get_or_create(user=request.user)
     return render(request, 'account/profile.html', {'user_ratings': user_ratings, 'user': request.user})
 
+
 @login_required
 def rate_user(request, user_id):
     user_to_rate = get_object_or_404(CustomUser, id=user_id)
-    rating = int(request.POST.get('rating'))
-    if 1 <= rating <= 5:
-        CustomUserRating.objects.update_or_create(
-            user=user_to_rate,
-            rated_by=request.user,
-            defaults={'score': rating}
-        )
-        all_ratings = CustomUserRating.objects.filter(user=user_to_rate)
-        average_rating = all_ratings.aggregate(Avg('score'))['score__avg']
-        user_to_rate.rating = average_rating
-        user_to_rate.save()
-        messages.success(request, f'You have rated {user_to_rate.username}.')
-    else:
-        messages.error(request, 'Invalid rating. Please rate between 1 and 5.')
+    try:
+        rating = float(request.POST.get('rating'))
+        if 1 <= rating <= 5:
+            CustomUserRating.objects.update_or_create(
+                user=user_to_rate,
+                rated_by=request.user,
+                defaults={'rating': rating}
+            )
+            # Rest of the code...
+
+            all_ratings = CustomUserRating.objects.filter(user=user_to_rate)
+            average_rating = all_ratings.aggregate(Avg('rating'))['rating__avg']
+            user_to_rate.rating = average_rating
+            user_to_rate.save()
+            messages.success(request, f'You have rated {user_to_rate.username}.')
+        else:
+            messages.error(request, 'Invalid rating. Please rate between 1 and 5.')
+    except ValueError:
+        messages.error(request, 'Invalid rating value.')
     return redirect('account:profile')
+
 
 @login_required
 def edit_profile(request):
@@ -91,6 +96,7 @@ def edit_profile(request):
     else:
         form = EditProfileForm(instance=request.user)
     return render(request, 'account/edit_profile.html', {'form': form})
+
 
 @login_required
 def change_password(request):

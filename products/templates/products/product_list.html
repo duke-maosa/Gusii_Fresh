@@ -2,6 +2,8 @@
 
 {% block content %}
 {% load static %}
+{% load custom_filters %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -23,12 +25,12 @@
                     <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
                     <p class="total-ratings">Total Ratings: {{ product.total_ratings }}</p>
                     <!-- Add to Cart Form -->
-                    <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                    <!-- <form action="{% url 'cart:add_to_cart' product:product.id %}" method="post">
                         {% csrf_token %}
                         <label for="quantity">Quantity:</label>
                         <input type="number" name="quantity" id="quantity" min="1" max="{{ product.available_quantity }}" value="1" required>
                         <button type="submit">Add to Cart</button>
-                    </form>
+                    </form> -->
                     <!-- Rate Product Form -->
                     <h3>Rate this Product</h3>
                     <form action="{% url 'products:rate_product' product.id %}" method="post">
@@ -36,7 +38,7 @@
                         <label for="product_rating">Rating:</label>
                         <select name="rating" id="product_rating" required>
                             <option value="">Choose a rating</option>
-                            {% for i in 1|to_range:6 %}
+                            {% for i in 6|to_range %}
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>
@@ -49,7 +51,7 @@
                         <label for="seller_rating">Rating:</label>
                         <select name="rating" id="seller_rating" required>
                             <option value="">Choose a rating</option>
-                            {% for i in 1|to_range:6 %}
+                            {% for i in 6|to_range %}
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>
@@ -127,4 +129,3 @@
     }
 </style>
 {% endblock %}
-``
