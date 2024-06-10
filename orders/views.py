@@ -5,7 +5,7 @@ from cart.models import CartItem
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-@login_required
+
 def order_processing(request):
     if request.method == 'POST':
         action = request.POST.get('action')
@@ -39,7 +39,7 @@ def order_processing(request):
     return HttpResponse("Order is being processed")
 
 
-@login_required
+
 def order_summary(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     order_items = order.order_items.all()

@@ -25,12 +25,13 @@
                     <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
                     <p class="total-ratings">Total Ratings: {{ product.total_ratings }}</p>
                     <!-- Add to Cart Form -->
-                    <!-- <form action="{% url 'cart:add_to_cart' product:product.id %}" method="post">
+                    <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
                         {% csrf_token %}
                         <label for="quantity">Quantity:</label>
                         <input type="number" name="quantity" id="quantity" min="1" max="{{ product.available_quantity }}" value="1" required>
                         <button type="submit">Add to Cart</button>
-                    </form> -->
+                    </form>
+                   
                     <!-- Rate Product Form -->
                     <h3>Rate this Product</h3>
                     <form action="{% url 'products:rate_product' product.id %}" method="post">

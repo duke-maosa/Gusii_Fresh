@@ -1,47 +1,22 @@
-{% extends "home/base.html" %}
-{% load static %}
+{% extends 'home/base.html' %}
 
-{% block title %}Welcome to Highland Fresh - Your Ultimate Grocery Destination{% endblock %}
+{% block title %}
+Home - Highland Fresh
+{% endblock %}
 
 {% block content %}
-<div class="hero">
-    <h1>Welcome to Highland Fresh</h1>
-    <p>Experience the freshest produce delivered from the heart of Kisii region to your doorstep.</p>
-    <a href="{% url 'products:product_list' %}" class="button">Explore Our Selection</a>
-    <a href="{% url 'home:home' %}" class="button">Learn More</a>
-</div>
-
-<div class="features">
-    <h2>Discover Our Features</h2>
-    <div class="feature">
-        <img src="{% static 'home/images/farmers.jpg' %}" alt="Meet Our Farmers">
-        <h3>Meet Our Farmers</h3>
-        <p>Get to know the dedicated farmers who cultivate our fresh produce with care and passion.</p>
-    </div>
-    <div class="feature">
-        <img src="{% static 'home/images/farmers.jpg' %}" alt="Fresh Produce">
-        <h3>Quality Fresh Produce</h3>
-        <p>Indulge in a wide array of premium quality, organic fruits and vegetables, sourced directly from local farms.</p>
-    </div>
-    <div class="feature">
-        <img src="{% static 'home/images/farmers.jpg' %}" alt="Fast Delivery">
-        <h3>Fast & Reliable Delivery</h3>
-        <p>Enjoy swift and reliable delivery service, ensuring your groceries reach you fresh and on time, every time.</p>
-    </div>
-</div>
-
-<div class="product-list">
-    <h2>Explore Our Featured Products</h2>
-    <div class="products">
-        {% for product in products %}
-        <div class="product-card">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-            <p class="price">${{ product.price }}</p>
-            <a href="{% url 'products:product_detail' product.id %}" class="button">View Product</a>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+<h1>Welcome to Kisii Fresh</h1>
+<p>Explore our fresh products and place your order today!</p>
+<a href="{% url 'products:product_list' %}">
+    <button>Shop Now</button>
+</a>
+<a href="{% url 'home:about_us' %}">
+    <button>Learn More</button>
+</a>
+<a href="{% url 'account:sellers_page' %}">
+    <p>Meet our Farmers</p>
+</a>
+<section>
+    <h2>Products</h2>
+</section>
 {% endblock %}

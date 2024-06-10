@@ -3,16 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Avg
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from allauth.socialaccount.models import SocialAccount
+
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, EditProfileForm
-from allauth.socialaccount.models import SocialAccount
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-
 
 def render_auth_form(request, form, template_name):
-    # Check if user is authenticated before querying SocialAccount
     social_accounts = SocialAccount.objects.filter(user=request.user) if request.user.is_authenticated else []
-    return render(request, template_name, {'form': form, 'social_accounts': social_accounts})
+    return render(request, template_name, {'form': form, 'social_accounts': social_accounts, 'user': request.user})
 
 
 def register(request):
@@ -46,19 +45,16 @@ def user_login(request):
         form = AuthenticationForm()
     return render_auth_form(request, form, 'account/login.html')
 
-
 @login_required
 def user_logout(request):
     logout(request)
     messages.success(request, 'Logout successful.')
     return redirect('home:index')
 
-
 @login_required
 def profile(request):
     user_ratings, _ = CustomUserRating.objects.get_or_create(user=request.user)
     return render(request, 'account/profile.html', {'user_ratings': user_ratings, 'user': request.user})
-
 
 @login_required
 def rate_user(request, user_id):
@@ -71,8 +67,6 @@ def rate_user(request, user_id):
                 rated_by=request.user,
                 defaults={'rating': rating}
             )
-            # Rest of the code...
-
             all_ratings = CustomUserRating.objects.filter(user=user_to_rate)
             average_rating = all_ratings.aggregate(Avg('rating'))['rating__avg']
             user_to_rate.rating = average_rating
@@ -83,7 +77,6 @@ def rate_user(request, user_id):
     except ValueError:
         messages.error(request, 'Invalid rating value.')
     return redirect('account:profile')
-
 
 @login_required
 def edit_profile(request):
@@ -97,7 +90,6 @@ def edit_profile(request):
         form = EditProfileForm(instance=request.user)
     return render(request, 'account/edit_profile.html', {'form': form})
 
-
 @login_required
 def change_password(request):
     if request.method == 'POST':
@@ -110,3 +102,11 @@ def change_password(request):
     else:
         form = PasswordChangeForm(user=request.user)
     return render(request, 'account/change_password.html', {'form': form})
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+@login_required
+def sellers_page(request):
+    # Logic to render the sellers' page
+    return render(request, 'account/sellers.html')

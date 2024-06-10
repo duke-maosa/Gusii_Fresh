@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'home/css/styles.css' %}" rel="stylesheet">
-    <title>{% block title %}Highland  Fresh{% endblock %}</title>
+    <title>{% block title %}Highland Fresh{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="{% url 'home:index' %}" class="navbar-brand">Highland Fresh</a>
+                <a href="{% url 'home:index' %}" class="navbar-brand">Gusii Fresh</a>
                 <ul class="nav-links">
                     <li><a href="{% url 'home:index' %}">Home</a></li>
                     <li><a href="{% url 'products:product_list' %}">Products</a></li>
@@ -47,7 +47,7 @@
     </main>
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Highland Fresh. All rights reserved.</p>
+            <p>&copy; 2024 Gusii Fresh. All rights reserved.</p>
         </div>
     </footer>
     <script src="{% static 'home/js/scripts.js' %}"></script>

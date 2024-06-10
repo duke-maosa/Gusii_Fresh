@@ -1,9 +1,9 @@
 {% extends 'home/base.html' %}
 
-{% block title %}Product Detail{% endblock %}
-
 {% block content %}
 {% load static %}
+{% load custom_filters %}
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -24,6 +24,7 @@
                     <p class="seller">Seller: {{ product.seller.username }}</p>
                     <p class="average-rating">Average Rating: {{ product.average_rating }}</p>
                     <p class="total-ratings">Total Ratings: {{ product.total_ratings }}</p>
+                    
                     <!-- Add to Cart Form -->
                     <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
                         {% csrf_token %}
@@ -31,6 +32,7 @@
                         <input type="number" name="quantity" id="quantity" min="1" max="{{ product.available_quantity }}" value="1" required>
                         <button type="submit">Add to Cart</button>
                     </form>
+                    
                     <!-- Rate Product Form -->
                     <h3>Rate this Product</h3>
                     <form action="{% url 'products:rate_product' product.id %}" method="post">
@@ -38,12 +40,13 @@
                         <label for="product_rating">Rating:</label>
                         <select name="rating" id="product_rating" required>
                             <option value="">Choose a rating</option>
-                            {% for i in 1|to_range:6 %}
+                            {% for i in 6|to_range %}
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>
                         <button type="submit">Submit Rating</button>
                     </form>
+                    
                     <!-- Rate Seller Form -->
                     <h3>Rate this Seller</h3>
                     <form action="{% url 'account:rate_user' product.seller.id %}" method="post">
@@ -51,7 +54,7 @@
                         <label for="seller_rating">Rating:</label>
                         <select name="rating" id="seller_rating" required>
                             <option value="">Choose a rating</option>
-                            {% for i in 1|to_range:6 %}
+                            {% for i in 6|to_range %}
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>
@@ -65,5 +68,67 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'home/css/product_detail.css' %}">
+<style>
+    .product-detail {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .product-images {
+        margin-bottom: 20px;
+    }
+
+    .product-images ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .product-images img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product-info {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-info h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .product-info p {
+        margin-bottom: 10px;
+    }
+
+    .product-info label {
+        font-weight: bold;
+    }
+
+    .product-info select {
+        margin-right: 10px;
+    }
+
+    .product-info button {
+        margin-top: 10px;
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .product-info button:hover {
+        background-color: #0056b3;
+    }
+</style>
 {% endblock %}

@@ -4,7 +4,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Product, ProductImage
 from .forms import ProductForm
 
-@login_required
 def product_list(request):
     products = Product.objects.all()
 
@@ -19,9 +18,9 @@ def product_list(request):
 
     return render(request, 'products/product_list.html', {'products': products_page})
 
-@login_required
+
 def product_detail(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(Product, id=product_id)
     return render(request, 'products/product_detail.html', {'product': product})
 
 @login_required
