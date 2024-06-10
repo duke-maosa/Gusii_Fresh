@@ -1,10 +1,11 @@
 {% extends "home/base.html" %}
+{% load static %}
 
-{% block title %}Welcome to Gusii Fresh - Your Ultimate Grocery Destination{% endblock %}
+{% block title %}Welcome to Highland Fresh - Your Ultimate Grocery Destination{% endblock %}
 
 {% block content %}
 <div class="hero">
-    <h1>Welcome to Gusii Fresh</h1>
+    <h1>Welcome to Highland Fresh</h1>
     <p>Experience the freshest produce delivered from the heart of Kisii region to your doorstep.</p>
     <a href="{% url 'products:product_list' %}" class="button">Explore Our Selection</a>
     <a href="{% url 'home:home' %}" class="button">Learn More</a>
@@ -18,12 +19,12 @@
         <p>Get to know the dedicated farmers who cultivate our fresh produce with care and passion.</p>
     </div>
     <div class="feature">
-        <img src="{% static 'home/images/fresh_produce.jpg' %}" alt="Fresh Produce">
+        <img src="{% static 'home/images/farmers.jpg' %}" alt="Fresh Produce">
         <h3>Quality Fresh Produce</h3>
         <p>Indulge in a wide array of premium quality, organic fruits and vegetables, sourced directly from local farms.</p>
     </div>
     <div class="feature">
-        <img src="{% static 'home/images/delivery.jpg' %}" alt="Fast Delivery">
+        <img src="{% static 'home/images/farmers.jpg' %}" alt="Fast Delivery">
         <h3>Fast & Reliable Delivery</h3>
         <p>Enjoy swift and reliable delivery service, ensuring your groceries reach you fresh and on time, every time.</p>
     </div>

@@ -8,14 +8,15 @@ body {
 }
 
 header {
-  background: #333;
-  color: #fff;
+  background: rgb(10, 37, 10);
+  color: rgb(150, 80, 54);
   padding: 10px 0;
 }
 
 .navbar-brand {
   font-size: 24px;
   margin-left: 20px;
+  color: coral;
 }
 
 .nav-links {
@@ -32,7 +33,7 @@ header {
 }
 
 .nav-links a {
-  color: #fff;
+  color: coral;
   text-decoration: none;
 }
 

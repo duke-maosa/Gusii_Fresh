@@ -22,7 +22,7 @@ def initiate_payment(request):
             "PartyB": settings.MPESA_BUSINESS_SHORTCODE,
             "PhoneNumber": request.user.phone_number,  # Replace with customer's phone number
             "CallBackURL": request.build_absolute_uri(reverse('mpesa_callback')),  # Callback URL for transaction status
-            "AccountReference": f"Gusii Fresh - {order.id}",  # Use a unique order reference
+            "AccountReference": f"Highland Fresh - {order.id}",  # Use a unique order reference
             "TransactionDesc": "Payment for order"  # Replace with description of the transaction
         }
 
