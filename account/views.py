@@ -5,9 +5,10 @@ from django.contrib import messages
 from django.db.models import Avg
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from allauth.socialaccount.models import SocialAccount
-
+from products.models import Product 
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, EditProfileForm
+
 
 def render_auth_form(request, form, template_name):
     social_accounts = SocialAccount.objects.filter(user=request.user) if request.user.is_authenticated else []
@@ -103,10 +104,22 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
     return render(request, 'account/change_password.html', {'form': form})
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+
 
 @login_required
 def sellers_page(request):
-    # Logic to render the sellers' page
-    return render(request, 'account/sellers.html')
+    # Get all sellers
+    sellers = CustomUser.objects.filter(user_type='seller')
+
+    # Calculate average rating for each seller
+    seller_ratings = {}
+    for seller in sellers:
+        seller_avg_rating = CustomUserRating.objects.filter(user=seller).aggregate(Avg('rating'))['rating__avg']
+        seller_ratings[seller.username] = seller_avg_rating
+
+    context = {
+        'sellers': sellers,
+        'seller_ratings': seller_ratings,
+    }
+
+    return render(request, 'account/sellers.html', context)

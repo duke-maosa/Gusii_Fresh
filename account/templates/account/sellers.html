@@ -1,0 +1,34 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Sellers Page - Highland Fresh{% endblock %}
+
+{% block content %}
+<section class="sellers-section">
+    <div class="container">
+        <h2>Sellers Page</h2>
+        <p>Welcome to the sellers' page! Here you can find information for sellers.</p>
+        
+        <!-- Display seller information and their products -->
+        <div class="row">
+            {% for seller in sellers %}
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ seller.username }}</h5>
+                        <p class="card-text">User Type: {{ seller.user_type }}</p>
+                        <p class="card-text">Average Rating: {% if seller_ratings.seller.username %}{{ seller_ratings.seller.username }}{% else %}N/A{% endif %}</p>
+                        <p class="card-text"><strong>Products:</strong></p>
+                        <ul>
+                            {% for product in seller.products.all %}
+                            <li>{{ product.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</section>
+{% endblock %}
