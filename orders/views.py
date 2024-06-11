@@ -43,7 +43,7 @@ def order_processing(request):
 def order_summary(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     order_items = order.order_items.all()
-    return render(request, 'orders/order_summary.html', {'order': order, 'order_items': order_items})
+    return render(request, 'orders/order_details.html', {'order': order, 'order_items': order_items})
 
 
 @login_required

@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +16,20 @@
                 <a href="{% url 'home:index' %}" class="navbar-brand">Highland Fresh</a>
                 <ul class="nav-links">
                     <li><a href="{% url 'home:index' %}">Home</a></li>
-                    <li><a href="{% url 'products:product_list' %}">Products</a></li>
+                    <li><a href="{% url 'home:about_us' %}"></a>About Us</li>
+                    <li><a href="{% url 'products:product_list' %}">HF Products</a></li>
                     <li><a href="{% url 'cart:view_cart' %}">Cart</a></li>
-                    <li><a href="{% url 'orders:order_processing' %}">Orders</a></li>
+                    <li><a href="{% url 'orders:order_summary' %}">My Orders</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'account:profile' %}">Profile</a></li>
                         <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
                     {% else %}
-                        <li><a href="{% url 'account:user_login' %}">Login</a></li>
+                        <li><a href="{% url 'account:user_login' %}?next={{ request.path }}">Login</a></li>
+                        <li><a href="{% provider_login_url 'google' %}">Login with Google</a></li>
                         <li><a href="{% url 'account:register' %}">Register</a></li>
                     {% endif %}
+
+
                 </ul>
                 <div class="search-form">
                     <form action="{% url 'search:search' %}" method="get">

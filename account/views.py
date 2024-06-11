@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.db.models import Avg
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from allauth.socialaccount.models import SocialAccount
-from products.models import Product 
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, EditProfileForm
 
@@ -54,7 +53,9 @@ def user_logout(request):
 
 @login_required
 def profile(request):
-    user_ratings, created = CustomUserRating.objects.get_or_create(user=request.user, defaults={'rating': 0})
+    user_ratings = CustomUserRating.objects.filter(user=request.user)
+
+
     return render(request, 'account/profile.html', {'user_ratings': user_ratings, 'user': request.user})
 
 @login_required
