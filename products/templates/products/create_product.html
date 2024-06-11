@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% block title %}Create/Edit Product - Highland Fresh{% endblock %}
+{% block content %}
+<section class="product-form-section">
+    <div class="container">
+        <h2>Create/Edit Product</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ product_form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Save">
+        </form>
+    </div>
+</section>
+{% endblock %}

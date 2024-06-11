@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% block title %}Delete Product - Highland Fresh{% endblock %}
+{% block content %}
+<section class="delete-product-section">
+    <div class="container">
+        <h2>Delete Product</h2>
+        <p>Are you sure you want to delete '{{ product.name }}'?</p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Delete">
+        </form>
+    </div>
+</section>
+{% endblock %}

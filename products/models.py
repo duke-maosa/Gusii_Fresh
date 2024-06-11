@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from account.models import CustomUser
 from django.core.exceptions import ValidationError
@@ -14,9 +15,10 @@ class Product(models.Model):
         # Add more choices as needed
     ]
 
-    DEFAULT_CATEGORY = 'category1'  # Define your default category here
+    DEFAULT_CATEGORY = 'category1'
 
-    name = models.CharField(max_length=255)
+    unique_identifier = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available_quantity = models.PositiveIntegerField()
@@ -38,8 +40,18 @@ class Product(models.Model):
         else:
             return 0
 
-class ProductImage(models.Model):
+class ProductReview(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')
+    reviewer = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='reviews')
+    review_text = models.TextField()
+    rating = models.PositiveIntegerField(validators=[validate_rating])
+    review_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Review for {self.product.name} by {self.reviewer.username}'
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='products/product_images/', default='homepic.jpeg')
 
     def __str__(self):

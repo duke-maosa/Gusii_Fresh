@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'crispy_forms',
     'products',
     'cart',
     'orders',
@@ -134,8 +135,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, '/static'),
 ]
 
-# Define the directory where collected static files will be stored
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -144,10 +144,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication settings
 LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# settings.py
+
+LOGIN_REDIRECT_URL = '/home:index/'
+
+LOGOUT_REDIRECT_URL = '/home/home/'
 
 AUTH_USER_MODEL = 'account.CustomUser'
+
+# settings.py
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
 # Sites framework
 SITE_ID = 1

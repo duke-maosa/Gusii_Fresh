@@ -1,6 +1,6 @@
 {% extends 'home/base.html' %}
 {% load i18n %}
-{% load allauth %}
+{% load crispy_forms_tags %}  <!-- Load crispy_forms_tags for better form styling -->
 {% load static %}
 
 {% block title %}Login - Highland Fresh{% endblock %}
@@ -9,7 +9,7 @@
     <h2>Login</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}  <!-- Use crispy forms for better styling -->
         <button type="submit">Login</button>
     </form>
 {% endblock %}
