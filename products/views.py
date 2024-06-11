@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib import messages
 from .models import Product, ProductImage
 from .forms import ProductForm
 
@@ -17,7 +18,6 @@ def product_list(request):
         products_page = paginator.page(paginator.num_pages)
 
     return render(request, 'products/product_list.html', {'products': products_page})
-
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
