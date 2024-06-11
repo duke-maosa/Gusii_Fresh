@@ -53,7 +53,7 @@ def user_logout(request):
 
 @login_required
 def profile(request):
-    user_ratings, _ = CustomUserRating.objects.get_or_create(user=request.user)
+    user_ratings, created = CustomUserRating.objects.get_or_create(user=request.user, defaults={'rating': 0})
     return render(request, 'account/profile.html', {'user_ratings': user_ratings, 'user': request.user})
 
 @login_required

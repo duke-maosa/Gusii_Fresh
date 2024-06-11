@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+{% block title %}Contact Us - Highland Fresh{% endblock %}
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or inquiries, please fill out the form below or reach out to us directly at our email.</p>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="{% url 'home:contact_us' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Render form fields using Django template syntax -->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</section>
+{% endblock %}

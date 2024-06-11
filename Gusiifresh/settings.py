@@ -69,7 +69,7 @@ ROOT_URLCONF = 'Gusiifresh.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,7 +131,7 @@ STATIC_URL = '/static/'
 # Define the path to your static files directories within each app
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    os.path.join(BASE_DIR, 'home/static'),
+    os.path.join(BASE_DIR, '/static'),
 ]
 
 # Define the directory where collected static files will be stored
