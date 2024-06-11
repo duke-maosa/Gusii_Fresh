@@ -18,6 +18,7 @@
             {% endfor %}
         </ul>
         <p>Total Cost: ${{ total_cost }}</p>
+        <input type="hidden" name="action" value="checkout">
         <button type="submit">Place Order</button>
     </form>
 </body>

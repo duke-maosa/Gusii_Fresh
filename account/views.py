@@ -19,12 +19,13 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            # Log the user in using the appropriate backend
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, 'Registration successful.')
             return redirect('home:index')
     else:
         form = RegistrationForm()
-    return render_auth_form(request, form, 'account/register.html')
+    return render(request, 'account/register.html', {'form': form})
 
 
 def user_login(request):

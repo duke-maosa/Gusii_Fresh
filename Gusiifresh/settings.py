@@ -65,13 +65,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
-
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin
+AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
-]
+)
+
+LOGIN_REDIRECT_URL = 'account/login'
+ACCOUNT_EMAIL_VERIFICATION = 'True'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 
 ROOT_URLCONF = 'Gusiifresh.urls'
