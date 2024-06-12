@@ -1,11 +1,16 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block title %}
 Home - Highland Fresh
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>Welcome to Highland Fresh</h1>
+<h1>Welcome to Highland-Fresh</h1>
 <p>Explore our fresh products and place your order today!</p>
 <a href="{% url 'products:product_list' %}">
     <button>Shop Now</button>
@@ -17,7 +22,7 @@ Home - Highland Fresh
     <p>Meet our Farmers</p>
 </a>
 <section>
-    <h2>H-FRESH Produce</h2>
+    <h2>Hi-FRESH Produce</h2>
     <a href="{% url 'products:product_list' %}">Featured Basket</a>
 </section>
 <section>

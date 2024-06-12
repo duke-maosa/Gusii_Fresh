@@ -1,27 +1,27 @@
-<!-- support/templates/support/ticket_detail.html -->
+{% extends 'home/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Detail</title>
-</head>
-<body>
-    <h2>Ticket Detail</h2>
-    <h3>Title: {{ ticket.title }}</h3>
-    <p>Description: {{ ticket.description }}</p>
-    <h3>Messages:</h3>
-    <ul>
+{% block content %}
+<div class="container">
+    <h1>Ticket Details</h1>
+    <h2>{{ ticket.title }}</h2>
+    <p>{{ ticket.description }}</p>
+
+    <h3>Messages</h3>
+    <div>
         {% for message in ticket.messages.all %}
-            <li>{{ message.sender.username }} - {{ message.sent_at }}: {{ message.message }}</li>
+        <div class="message">
+            <strong>{{ message.sender }}:</strong>
+            <p>{{ message.content }}</p>
+            <small>{{ message.timestamp }}</small>
+        </div>
         {% endfor %}
-    </ul>
-    <h3>Reply:</h3>
+    </div>
+
+    <h3>Reply to Ticket</h3>
     <form method="post">
         {% csrf_token %}
-        <textarea name="message" required></textarea><br>
-        <button type="submit">Reply</button>
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Send</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

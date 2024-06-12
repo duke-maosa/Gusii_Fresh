@@ -28,7 +28,7 @@ class Product(models.Model):
     sales_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='product_images/', default='homepic.jpeg')
+    image = models.ImageField(upload_to='media/product_images/', blank=True, null=True)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=DEFAULT_CATEGORY)
 
     def __str__(self):
@@ -52,7 +52,7 @@ class ProductReview(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='products/product_images/', default='homepic.jpeg')
+    image = models.ImageField(upload_to='media/product_images/', default='homepic.jpeg')
 
     def __str__(self):
         return f'Image for {self.product.name}'

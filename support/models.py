@@ -1,10 +1,10 @@
 from django.db import models
-from account.models import CustomUser
+from django.conf import settings  # Import settings module to use AUTH_USER_MODEL
 
 class Ticket(models.Model):
-    title = models.CharField(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
     description = models.TextField()
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -12,9 +12,9 @@ class Ticket(models.Model):
 
 class Message(models.Model):
     ticket = models.ForeignKey(Ticket, related_name='messages', on_delete=models.CASCADE)
-    sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    message = models.TextField()
-    sent_at = models.DateTimeField(auto_now_add=True)
+    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Message from {self.sender.username} on {self.ticket.title}'
+        return f"Message from {self.sender} on {self.timestamp}"

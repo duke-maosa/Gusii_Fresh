@@ -7,7 +7,6 @@ from .forms import ProductForm
 @login_required
 def product_list(request):
     products = Product.objects.all()
-    # Add pagination logic here if needed
     return render(request, 'products/product_list.html', {'products': products})
 
 @login_required

@@ -9,13 +9,11 @@
         <div class="col-md-4">
             <div class="product-card">
                 <div class="product-image">
-                    {% with product.images.all|first as image %}
-                        {% if image %}
-                        <img src="{{ image.image.url }}" alt="{{ product.name }}">
-                        {% else %}
-                        <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
-                        {% endif %}
-                    {% endwith %}
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
+                    {% endif %}
                 </div>
                 <div class="product-info">
                     <h2>{{ product.name }}</h2>
