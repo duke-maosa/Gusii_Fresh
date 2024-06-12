@@ -1,0 +1,68 @@
+/* General styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navbar {
+  background-color: #123332;
+  color: #FFD9BE;
+  padding: 10px 0;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.nav-links li a {
+  color: #FFD9BE;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.search-form {
+  margin-left: auto;
+}
+
+.search-form input[type="text"],
+.search-form button {
+  padding: 8px;
+  border: none;
+}
+
+footer {
+  background-color: darkgreen;
+  color: #FFD9BE;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.messages {
+  list-style-type: none;
+  padding: 0;
+}
+
+.messages li {
+  margin-bottom: 10px;
+}

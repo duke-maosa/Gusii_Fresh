@@ -8,6 +8,29 @@ from allauth.socialaccount.models import SocialAccount
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, EditProfileForm
 
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Login successful.')
+                next_url = request.POST.get('next', 'account:profile')  # Redirect to profile view by default
+                return redirect(next_url)
+            else:
+                messages.error(request, 'Invalid username or password.')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = LoginForm()
+
+    next_url = request.GET.get('next', '')  # Retrieve next URL from GET parameters
+    return render(request, 'account/login.html', {'form': form, 'next': next_url})
+
+
 
 def render_auth_form(request, form, template_name):
     social_accounts = SocialAccount.objects.filter(user=request.user) if request.user.is_authenticated else []
@@ -27,24 +50,6 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'account/register.html', {'form': form})
 
-
-def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'Login successful.')
-                next_url = request.GET.get('next', 'home:index')
-                return redirect(next_url)
-            else:
-                messages.error(request, 'Invalid username or password.')
-    else:
-        form = AuthenticationForm()
-    return render_auth_form(request, form, 'account/login.html')
 
 @login_required
 def user_logout(request):

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'home/css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/base.css' %}" rel="stylesheet">
     <title>{% block title %}Highland Fresh{% endblock %}</title>
 </head>
 <body>
@@ -19,27 +19,20 @@
                     <li><a href="{% url 'home:about_us' %}">About Us</a></li>
                     <li><a href="{% url 'products:product_list' %}">HF Products</a></li>
                     <li><a href="{% url 'cart:view_cart' %}">Cart</a></li>
-
                     {% if order %}
-                        <li>
-                            <a href="{% url 'cart:view_cart' %}">Order Summary</a>
-                        </li>
+                        <li><a href="{% url 'cart:view_cart' %}">Order Summary</a></li>
                     {% endif %}
-                    
-                    
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'account:profile' %}">Profile</a></li>
-                        <li>
-                            <a href="{% url 'account:user_logout' %}">Logout</a></li>
+                        <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
                     {% else %}
-                        <li>
-                            <a href="{% url 'account:user_login' %}?next={{ request.path }}">Login</a>
-                        </li>
-                        
+                        <li><a href="{% url 'account:user_login' %}?next={% url 'account:profile' %}">Login</a></li>
+
+
+
+
                         <li><a href="{% url 'account:register' %}">Register</a></li>
                     {% endif %}
-
-
                 </ul>
                 <div class="search-form">
                     <form action="{% url 'search:search' %}" method="get">
@@ -58,8 +51,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </main>
     <footer class="footer">
         <div class="container">
