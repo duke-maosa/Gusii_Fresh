@@ -14,10 +14,10 @@
         {% csrf_token %}
         <ul>
             {% for item in cart_items %}
-                <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: ${{ item.product.price }}</li>
+                <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: Ksh.{{ item.product.price }}</li>
             {% endfor %}
         </ul>
-        <p>Total Cost: ${{ total_cost }}</p>
+        <p>Total Cost: Ksh.{{ total_cost }}</p>
         <input type="hidden" name="action" value="checkout">
         <button type="submit">Place Order</button>
     </form>
