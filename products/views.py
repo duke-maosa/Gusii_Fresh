@@ -13,9 +13,10 @@ def product_list(request):
 @login_required
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
+    rating_range = range(1, 6)  
     context = {
         'product': product,
-        'rating_range': range(1, 6),
+        'rating_range': rating_range,
     }
     return render(request, 'products/product_detail.html', context)
 

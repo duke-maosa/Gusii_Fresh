@@ -44,6 +44,7 @@
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>
+                        <input type="hidden" name="next" value="{% url 'products:product_detail' product.id %}">
                         <button type="submit">Submit Rating</button>
                     </form>
                     

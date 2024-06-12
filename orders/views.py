@@ -41,14 +41,14 @@ def order_processing(request):
 def order_summary(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     order_items = order.order_items.all()
-    return render(request, 'orders/order_summary.html', {'order': order, 'order_items': order_items})
+    return render(request, 'orders/order_details.html', {'order': order, 'order_items': order_items})
 
 
 @login_required
 def order_tracking(request, order_id):
     order = get_object_or_404(Order, id=order_id, user=request.user)
     tracking_id = order.tracking_id  # Assuming there's a tracking_id field in the Order model
-    return render(request, 'orders/order_tracking ', {'order_id': order_id, 'tracking_id': tracking_id})
+    return render(request, 'orders/order_tracking.html ', {'order_id': order_id, 'tracking_id': tracking_id})
 
 @login_required
 def cancel_order(request, order_id):

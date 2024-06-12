@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Product
@@ -24,4 +24,5 @@ def rate_product(request, product_id):
     else:
         form = ReviewForm()
 
-    return redirect(request.POST.get('next', 'products:product_detail', args=[product_id]))
+    next_url = request.POST.get('next', reverse('products:product_detail', args=[product_id]))
+    return redirect(next_url)

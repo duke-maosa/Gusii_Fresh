@@ -1,3 +1,4 @@
+# custom_filters.py in your templatetags directory
 from django import template
 
 register = template.Library()
