@@ -9,11 +9,13 @@
         <div class="col-md-4">
             <div class="product-card">
                 <div class="product-image">
-                    {% if product.images.first %}
-                    <img src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                    <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
-                    {% endif %}
+                    {% with product.images.all|first as image %}
+                        {% if image %}
+                        <img src="{{ image.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                        <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
+                        {% endif %}
+                    {% endwith %}
                 </div>
                 <div class="product-info">
                     <h2>{{ product.name }}</h2>
@@ -50,40 +52,5 @@
 {% endblock %}
 
 {% block extra_css %}
-<style>
-    .product-card {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-        background-color: #f9f9f9;
-    }
-    .product-image img {
-        max-width: 100%;
-        height: auto;
-    }
-    .product-info {
-        margin-top: 10px;
-    }
-    .product-info h2 {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-    .product-info .price, .product-info .availability {
-        margin-bottom: 5px;
-    }
-    .product-info .btn {
-        display: block;
-        width: 100%;
-        margin-top: 10px;
-    }
-    .pagination {
-        margin-top: 20px;
-        text-align: center;
-    }
-    .pagination a, .pagination span {
-        margin: 0 5px;
-        text-decoration: none;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_list.css' %}">
 {% endblock %}

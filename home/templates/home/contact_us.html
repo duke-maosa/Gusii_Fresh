@@ -1,5 +1,12 @@
 {% extends 'home/base.html' %}
+{% load static %}
+
 {% block title %}Contact Us - Highland Fresh{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'static/home/css/contact.css' %}">
+{% endblock %}
+
 {% block content %}
 <section class="contact-section">
     <div class="container">

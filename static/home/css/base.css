@@ -15,7 +15,8 @@ body {
 .navbar {
   background-color: #123332;
   color: #FFD9BE;
-  padding: 10px 0;
+  padding: 20px 0; /* Increase padding for better spacing */
+  position: relative; /* Position relative for absolute positioning of elements */
 }
 
 .navbar-brand {
@@ -28,27 +29,64 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex; /* Use flexbox for better alignment */
+  justify-content: space-between; /* Evenly distribute items */
+  align-items: center; /* Center items vertically */
 }
 
 .nav-links li {
-  display: inline;
-  margin-right: 20px;
+  margin-right: 20px; /* Adjust spacing between items */
+}
+
+.nav-links li:last-child {
+  margin-right: 0; /* Remove margin from last item */
 }
 
 .nav-links li a {
   color: #FFD9BE;
   text-decoration: none;
   font-size: 1.2rem;
+  padding: 10px 20px; /* Adjust padding for buttons */
+  border-radius: 5px; /* Add rounded corners to buttons */
+  transition: background-color 0.3s; /* Add smooth transition effect */
+  position: relative; /* Position relative for absolute positioning of elements */
+}
+
+.nav-links li a:hover {
+  background-color: #0a7a8c; /* Darken background color on hover */
+}
+
+/* Crazy hover styles for buttons */
+.nav-links li a:hover::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-color: #FFD9BE;
+  z-index: -1;
+  border-radius: 10px;
 }
 
 .search-form {
   margin-left: auto;
+  position: relative; /* Position relative for absolute positioning of elements */
 }
 
-.search-form input[type="text"],
+.search-form input[type="text"] {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
 .search-form button {
   padding: 8px;
   border: none;
+  background-color: transparent;
+  color: #FFD9BE;
+  position: absolute;
+  right: 10px; /* Align to the right */
 }
 
 footer {

@@ -4,32 +4,49 @@
 {% block title %}About Us - Highland Fresh{% endblock %}
 
 {% block extra_css %}
-<!-- Add any additional CSS specific to the about us page here -->
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/about.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h1>About Highland Fresh</h1>
-    <p>Welcome to Highland Fresh, your ultimate destination for high-quality, fresh produce straight from the heart of Kisii region. At Highland Fresh, we are passionate about delivering the freshest and most nutritious fruits and vegetables to our customers.</p>
+    <section class="about-section">
+        <h1>Welcome to Highland Fresh</h1>
+        <p>Discover the freshest and most nutritious fruits and vegetables straight from the heart of the Kisii region. At Highland Fresh, we're dedicated to delivering high-quality produce that's locally sourced and organic.</p>
+        <img src="{% static 'home/images/about-fresh.jpg' %}" alt="Highland Fresh Produce" class="about-image">
+    </section>
     
-    <h2>Our Mission</h2>
-    <p>Our mission at Highland Fresh is to provide our customers with the finest selection of locally sourced, organic produce while supporting and empowering our local farming communities.</p>
+    <section class="mission-vision-section">
+        <div class="mission-section">
+            <h2>Our Mission</h2>
+            <p>Empowering our local farming communities by providing customers with the finest selection of fresh, organic produce.</p>
+        </div>
+        
+        <div class="vision-section">
+            <h2>Our Vision</h2>
+            <p>Creating a sustainable agricultural ecosystem that benefits both customers and farmers for generations to come.</p>
+        </div>
+    </section>
     
-    <h2>Our Vision</h2>
-    <p>Our vision is to create a sustainable and thriving agricultural ecosystem that benefits both our customers and our farmers, ensuring a healthier future for generations to come.</p>
+    <section class="values-section">
+        <h2>Our Values</h2>
+        <ul>
+            <li><strong>Quality:</strong> We are committed to providing only the highest quality produce to our customers.</li>
+            <li><strong>Sustainability:</strong> Prioritizing sustainable farming practices to minimize environmental impact.</li>
+            <li><strong>Community:</strong> Fostering strong relationships with our local farming communities.</li>
+            <li><strong>Integrity:</strong> Conducting our business with honesty, transparency, and integrity.</li>
+        </ul>
+    </section>
     
-    <h2>Our Values</h2>
-    <ul>
-        <li>Quality: We are committed to providing only the highest quality produce to our customers.</li>
-        <li>Sustainability: We prioritize sustainable farming practices to minimize environmental impact.</li>
-        <li>Community: We believe in fostering strong relationships with our local farming communities.</li>
-        <li>Integrity: We conduct our business with honesty, transparency, and integrity.</li>
-    </ul>
+    <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <p>Our team at Highland Fresh is composed of passionate individuals dedicated to delivering excellence in every aspect of our business. From our farmers to our delivery drivers, each member plays a vital role in ensuring your satisfaction.</p>
+        <img src="{% static 'home/images/about-team.jpg' %}" alt="Highland Fresh Team" class="team-image">
+    </section>
     
-    <h2>Meet Our Team</h2>
-    <p>Our team at Highland Fresh is composed of passionate individuals dedicated to delivering excellence in every aspect of our business. From our farmers to our delivery drivers, each member plays a vital role in ensuring your satisfaction.</p>
-    
-    <h2>Contact Us</h2>
-    <p>If you have any questions or inquiries, please don't hesitate to <a href="{% url 'home:contact_us' %}">contact us</a>. We're here to help!</p>
+    <section class="contact-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or inquiries, please don't hesitate to <a href="{% url 'home:contact_us' %}">contact us</a>. We're here to help!</p>
+        <img src="{% static 'home/images/about-contact.jpg' %}" alt="Contact Us" class="contact-image">
+    </section>
 </div>
 {% endblock %}

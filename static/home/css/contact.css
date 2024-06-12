@@ -1,0 +1,57 @@
+/* Contact Us Page Styles */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #123332;
+  margin-bottom: 20px;
+}
+
+.contact-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.contact-section form {
+  margin-top: 20px;
+}
+
+.contact-section form input[type="text"],
+.contact-section form input[type="email"],
+.contact-section form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-section form input[type="submit"] {
+  background-color: #123332;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-section form input[type="submit"]:hover {
+  background-color: #0a7a8c;
+}
+
+.messages {
+  list-style-type: none;
+  padding: 0;
+}
+
+.messages li {
+  margin-bottom: 10px;
+}
