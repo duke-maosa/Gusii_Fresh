@@ -35,12 +35,12 @@
                     
                     <!-- Rate Product Form -->
                     <h3>Rate this Product</h3>
-                    <form action="{% url 'products:rate_product' product.id %}" method="post">
+                    <form action="{% url 'reviews:rate_product' product.id %}" method="post">
                         {% csrf_token %}
                         <label for="product_rating">Rating:</label>
                         <select name="rating" id="product_rating" required>
                             <option value="">Choose a rating</option>
-                            {% for i in 6|to_range %}
+                            {% for i in rating_range %}
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>

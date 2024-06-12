@@ -2,6 +2,6 @@ from django import template
 
 register = template.Library()
 
-@register.filter
-def range(start, end):
-    return range(start, end)
+@register.filter(name='to_range')
+def to_range(value):
+    return range(1, value + 1)

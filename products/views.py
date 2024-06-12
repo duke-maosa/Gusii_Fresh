@@ -13,7 +13,11 @@ def product_list(request):
 @login_required
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'products/product_detail.html', {'product': product})
+    context = {
+        'product': product,
+        'rating_range': range(1, 6),
+    }
+    return render(request, 'products/product_detail.html', context)
 
 @login_required
 def create_product(request):

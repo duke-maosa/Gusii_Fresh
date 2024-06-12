@@ -8,7 +8,7 @@
 
 .contact-section h2 {
   font-size: 2.5rem;
-  color: #123332;
+  color: #FFD9BE;
   margin-bottom: 20px;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .contact-section form input[type="submit"]:hover {
-  background-color: #0a7a8c;
+  background-color: #78cf3f;
 }
 
 .messages {

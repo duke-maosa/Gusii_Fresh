@@ -30,12 +30,12 @@ body {
   margin: 0;
   padding: 0;
   display: flex; /* Use flexbox for better alignment */
-  justify-content: space-between; /* Evenly distribute items */
+  justify-content:right; 
   align-items: center; /* Center items vertically */
 }
 
 .nav-links li {
-  margin-right: 20px; /* Adjust spacing between items */
+  margin-right: 5px; /* Adjust spacing between items */
 }
 
 .nav-links li:last-child {
@@ -81,7 +81,7 @@ body {
 }
 
 .search-form button {
-  padding: 8px;
+  padding: 2px;
   border: none;
   background-color: transparent;
   color: #FFD9BE;
@@ -90,8 +90,8 @@ body {
 }
 
 footer {
-  background-color: darkgreen;
-  color: #FFD9BE;
+  background-color: #123332;
+  color: #ff9696;
   text-align: center;
   padding: 20px 0;
 }
@@ -103,4 +103,57 @@ footer {
 
 .messages li {
   margin-bottom: 10px;
+}
+
+/* Delivery Section Styles */
+
+.delivery-section {
+  margin-top: 50px;
+  padding: 40px 0;
+  background-color: #f8f9fa;
+}
+
+.delivery-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #123332;
+  margin-bottom: 30px;
+}
+
+.feature-box {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.feature-box h3 {
+  font-size: 1.5rem;
+  color: #0a7a8c;
+  margin-bottom: 15px;
+}
+
+.feature-box .feature-image {
+  margin-bottom: 15px;
+}
+
+.feature-box .feature-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }

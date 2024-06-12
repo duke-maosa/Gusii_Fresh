@@ -17,6 +17,47 @@ Home - Highland Fresh
     <p>Meet our Farmers</p>
 </a>
 <section>
-    <h2>Get Products</h2>
+    <h2>H-FRESH Produce</h2>
+    <a href="{% url 'products:product_list' %}">Featured Basket</a>
 </section>
+<section>
+    <h2>New in Market</h2>
+    <a href="{% url 'products:product_list' %}">Latest Products</a>
+</section>
+<section class="delivery-section">
+    <div class="container">
+        <h2>Speed, Quality, and Delight: Kisii's Fresh Bounty Delivered to Your Doorstep</h2>
+        <div class="feature-grid">
+            <div class="feature-box">
+                <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="https://5.imimg.com/data5/ANDROID/Default/2022/8/OY/FO/TZ/153591372/product-jpeg-500x500.jpg" alt="Swift Delivery">
+                    </div>
+                    <h3>Swift Delivery</h3>
+                    <p>Our state-of-the-art logistics network and climate-controlled fleet race to deliver Kisii's freshest produce to your doorstep with unparalleled speed.</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="https://cdn.britannica.com/19/19-050-C172B321/Kenya-map-boundaries-cities-locator.jpg" alt="Nationwide Coverage">
+                    </div>
+                    <h3>Nationwide Coverage</h3>
+                    <p>Unlock the bountiful agricultural riches of Kisii, now available in all major urban centers across Kenya through our strategically located warehouses and distribution hubs.</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-content">
+                    <div class="feature-image">
+                        <img src="https://c8.alamy.com/comp/2R515F2/experience-the-convenience-of-fast-and-efficient-delivery-with-this-collection-of-vector-illustrations-showcasing-the-speed-reliability-and-conveni-2R515F2.jpg" alt="Timely Arrivals">
+                    </div>
+                    <h3>Timely Arrivals</h3>
+                    <p>With real-time tracking and monitoring, we ensure your orders arrive right when you need them, keeping you informed every step of the way.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}
