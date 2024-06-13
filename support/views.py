@@ -9,9 +9,9 @@ def create_ticket(request):
     if request.method == 'POST':
         form = TicketForm(request.POST)
         if form.is_valid():
-            ticket = form.save(commit=False)  # Don't save to database yet
-            ticket.user = request.user  # Assign the logged-in user to the ticket
-            ticket.save()  # Now save to database
+            ticket = form.save(commit=False)  
+            ticket.user = request.user 
+            ticket.save() 
             messages.success(request, 'Your ticket has been created successfully!')
             return redirect('support:ticket_detail', ticket_id=ticket.id)
     else:

@@ -14,7 +14,7 @@ body {
 }
 .buttons {
   display: flex;
-  gap: 20px; /* Space between the buttons */
+  gap:50px; /* Space between the buttons */
   justify-content: center;
   margin-top: 20px;
 }
@@ -73,6 +73,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
+  
 }
 
 .btn-main {
@@ -81,7 +82,7 @@ body {
   background-color: #ff5733;
   color: white;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius:9px;
   transition: background-color 0.3s;
   text-decoration: none;
 }
@@ -94,6 +95,10 @@ body {
   text-align: center;
   margin: 50px 0;
 }
+.meet-farmers:hover {
+  color: #123332;
+}
+
 
 .meet-farmers h2 {
   font-size: 2.5rem;

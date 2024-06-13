@@ -18,7 +18,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'Login successful.')
-                next_url = request.POST.get('next', 'account:profile')  # Redirect to profile view by default
+                next_url = request.POST.get('next', '')  # Default to home page if 'next' not specified
                 return redirect(next_url)
             else:
                 messages.error(request, 'Invalid username or password.')
@@ -29,7 +29,6 @@ def user_login(request):
 
     next_url = request.GET.get('next', '')  # Retrieve next URL from GET parameters
     return render(request, 'account/login.html', {'form': form, 'next': next_url})
-
 
 
 def render_auth_form(request, form, template_name):

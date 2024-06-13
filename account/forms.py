@@ -3,11 +3,18 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 from .models import CustomUser, CustomUserRating
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
+    user_type = forms.ChoiceField(choices=[('buyer', 'Buyer'), ('seller', 'Seller')],
+                                  widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
         model = CustomUser
         fields = ['username', 'email', 'password1', 'password2', 'user_type']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}),
+        }
 
 
 class LoginForm(AuthenticationForm):

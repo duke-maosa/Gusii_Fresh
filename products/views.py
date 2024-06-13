@@ -40,6 +40,12 @@ def create_product(request):
 @login_required
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    # Check if the current user is the creator of the product
+    if product.created_by != request.user:
+        messages.error(request, 'You are not authorized to edit this product.')
+        return redirect('products:product_list')
+    
+
     if request.method == 'POST':
         product_form = ProductForm(request.POST, request.FILES, instance=product)
         if product_form.is_valid():
@@ -60,8 +66,15 @@ def edit_product(request, product_id):
 @login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    
+    # Check if the current user is the creator of the product
+    if product.created_by != request.user:
+        messages.error(request, 'You are not authorized to delete this product.')
+        return redirect('products:product_list')
+    
     if request.method == 'POST':
         product.delete()
         messages.success(request, 'Product deleted successfully.')
         return redirect('products:product_list')
+    
     return render(request, 'products/delete_product_confirm.html', {'product': product})
