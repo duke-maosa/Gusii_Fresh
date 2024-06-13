@@ -7,13 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'home/css/base.css' %}" rel="stylesheet">
-    <title>{% block title %}Highland Fresh{% endblock %}</title>
+    <title>{% block title %}Gusii-Highland Fresh{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <a href="{% url 'home:index' %}" class="navbar-brand">Highland Fresh</a>
+                <a href="{% url 'home:index' %}" class="navbar-brand">Gusii-Fresh</a>
                 <ul class="nav-links">
                     <li><a href="{% url 'home:index' %}">Home</a></li>
                     <li><a href="{% url 'home:about_us' %}">About Us</a></li>
@@ -27,10 +27,6 @@
                         <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
                     {% else %}
                         <li><a href="{% url 'account:user_login' %}?next={% url 'account:profile' %}">Login</a></li>
-
-
-
-
                         <li><a href="{% url 'account:register' %}">Register</a></li>
                     {% endif %}
                 </ul>
@@ -55,9 +51,43 @@
     </main>
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Highland Fresh. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h3>About Us</h3>
+                    <p>Highland Fresh is dedicated to providing the freshest produce from Kisii, Kenya, directly to your doorstep.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'home:home' %}">Home</a></li>
+                        <li><a href="{% url 'products:product_list' %}">Products</a></li>
+                        <li><a href="{% url 'home:about_us' %}">About Us</a></li>
+                        <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> +254 72881 9040</li>
+                        <li><i class="fas fa-envelope"></i> info@plphighlandfresh.com</li>
+                    </ul>
+                </div>
+                <div class="footer-section social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Highland Fresh. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+    
     <script src="{% static 'home/js/scripts.js' %}"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* General styles */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: cursive;
   margin: 0;
   padding: 0;
 }
@@ -15,8 +15,8 @@ body {
 .navbar {
   background-color: #123332;
   color: #FFD9BE;
-  padding: 20px 0; /* Increase padding for better spacing */
-  position: relative; /* Position relative for absolute positioning of elements */
+  padding: 20px 0;
+  position: relative;
 }
 
 .navbar-brand {
@@ -29,34 +29,33 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Use flexbox for better alignment */
-  justify-content:right; 
-  align-items: center; /* Center items vertically */
+  display: flex;
+  justify-content: right;
+  align-items: center;
 }
 
 .nav-links li {
-  margin-right: 5px; /* Adjust spacing between items */
+  margin-right: 5px;
 }
 
 .nav-links li:last-child {
-  margin-right: 0; /* Remove margin from last item */
+  margin-right: 0;
 }
 
 .nav-links li a {
   color: #FFD9BE;
   text-decoration: none;
   font-size: 1.2rem;
-  padding: 10px 20px; /* Adjust padding for buttons */
-  border-radius: 5px; /* Add rounded corners to buttons */
-  transition: background-color 0.3s; /* Add smooth transition effect */
-  position: relative; /* Position relative for absolute positioning of elements */
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  position: relative;
 }
 
 .nav-links li a:hover {
-  background-color: #0a7a8c; /* Darken background color on hover */
+  background-color: #0a7a8c;
 }
 
-/* Crazy hover styles for buttons */
 .nav-links li a:hover::before {
   content: '';
   position: absolute;
@@ -71,7 +70,7 @@ body {
 
 .search-form {
   margin-left: auto;
-  position: relative; /* Position relative for absolute positioning of elements */
+  position: relative;
 }
 
 .search-form input[type="text"] {
@@ -86,23 +85,7 @@ body {
   background-color: transparent;
   color: #FFD9BE;
   position: absolute;
-  right: 10px; /* Align to the right */
-}
-
-footer {
-  background-color: #123332;
-  color: #ff9696;
-  text-align: center;
-  padding: 20px 0;
-}
-
-.messages {
-  list-style-type: none;
-  padding: 0;
-}
-
-.messages li {
-  margin-bottom: 10px;
+  right: 10px;
 }
 
 /* Delivery Section Styles */
@@ -156,4 +139,89 @@ footer {
 .feature-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styles */
+.footer {
+  background-color: #123332;
+  color: #FFD9BE;
+  padding: 40px 0;
+}
+
+.footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #FFD9BE;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li,
+.footer-section a {
+  font-size: 1rem;
+  color: #FFD9BE;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.footer-section ul {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section .social-links a {
+  margin: 0 10px;
+  color: #FFD9BE;
+  font-size: 1.2rem;
+}
+
+.footer-section .social-links a:hover {
+  color: snow;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+/* Font Awesome Integration */
+.fas,
+.fab {
+  margin-right: 10px;
+}
+
+/* Specific Footer Link Styles */
+.footer-section.links a {
+  text-decoration: none;
+  color: #FFD9BE;
+}
+
+.footer-section.links a:hover {
+  color: white;
+  text-decoration: none;
 }
