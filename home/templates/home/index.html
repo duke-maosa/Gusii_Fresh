@@ -11,11 +11,11 @@ Home - Highland Fresh
 
 {% block content %}
 <div class="container">
-    <h1 class="welcomeh1">Welcome to Highland-Fresh</h1>
+    <h1 class="welcomeh1">Welcome to Gusii-Fresh</h1>
     <p>Explore our fresh products and place your order today!</p>
     <div class="buttons">
-        <a href="{% url 'products:product_list' %}" class="btn-main">Shop Now</a>
-        <a href="{% url 'home:about_us' %}" class="btn-main">Learn More</a>
+        <button class="btn-main" onclick="window.location.href='{% url 'products:product_list' %}'">Shop Now</button>
+        <button class="btn-main" onclick="window.location.href='{% url 'home:about_us' %}'">Learn More</button>
     </div>
 </div>
 
@@ -74,16 +74,18 @@ Home - Highland Fresh
 </section>
 
 <section class="delivery-section">
-    <div class="container">
-        <h2>Speed, Quality, and Delight: Kisii's Fresh Bounty Delivered to Your Doorstep</h2>
-        <div class="feature-grid">
-            <div class="feature-box">
-                <div class="feature-content">
-                    <div class="feature-image">
-                        <img src="https://5.imimg.com/data5/ANDROID/Default/2022/8/OY/FO/TZ/153591372/product-jpeg-500x500.jpg" alt="Swift Delivery">
+    <div>
+        <div footer-content>
+            <h2>Speed, Quality, and Delight: Kisii's Fresh Bounty Delivered to Your Doorstep</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <div class="feature-content">
+                        <div class="feature-image">
+                            <img src="https://5.imimg.com/data5/ANDROID/Default/2022/8/OY/FO/TZ/153591372/product-jpeg-500x500.jpg" alt="Swift Delivery">
+                        </div>
+                        <h3>Swift Delivery</h3>
+                        <p>Our state-of-the-art logistics network and climate-controlled fleet race to deliver Kisii's freshest produce to your doorstep with unparalleled speed.</p>
                     </div>
-                    <h3>Swift Delivery</h3>
-                    <p>Our state-of-the-art logistics network and climate-controlled fleet race to deliver Kisii's freshest produce to your doorstep with unparalleled speed.</p>
                 </div>
             </div>
             <div class="feature-box">

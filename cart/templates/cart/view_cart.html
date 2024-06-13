@@ -32,7 +32,11 @@
             </ul>
             <div class="cart-total">
                 <p>Total: Ksh.{{ total_cost }}</p>
-                <button type="submit" class="cart-button">Place Order</button>
+                <form method="post" action="{% url 'orders:order_processing' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="cart-button">Place Order</button>
+                </form>
+                
             </div>
         </form>
     {% else %}

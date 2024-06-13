@@ -31,7 +31,8 @@ def order_processing(request):
             return redirect('orders:order_summary', order_id=order.id)
         else:
             # Handle other actions if necessary
-            pass
+            messages.error(request, "Invalid action.")
+            return redirect('cart:view_cart')  # Redirect to an appropriate page for invalid actions
     else:
         cart_items = CartItem.objects.filter(user=request.user)
         total_cost = sum(item.product.price * item.quantity for item in cart_items)

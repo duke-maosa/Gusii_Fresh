@@ -12,6 +12,45 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
+.buttons {
+  display: flex;
+  gap: 20px; /* Space between the buttons */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-main {
+  background-color: #123332;
+  color: brown;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-main:hover {
+  transform: translateY(-5px);
+  background-color: #0f2a26;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .btn-main {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-main {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
 
 .intro {
   text-align: center;
