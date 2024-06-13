@@ -10,25 +10,65 @@ Home - Highland Fresh
 {% endblock %}
 
 {% block content %}
-<h1>Welcome to Highland-Fresh</h1>
-<p>Explore our fresh products and place your order today!</p>
-<a href="{% url 'products:product_list' %}">
-    <button>Shop Now</button>
-</a>
-<a href="{% url 'home:about_us' %}">
-    <button>Learn More</button>
-</a>
-<a href="{% url 'account:sellers_page' %}">
-    <p>Meet our Farmers</p>
-</a>
-<section>
-    <h2>Hi-FRESH Produce</h2>
-    <a href="{% url 'products:product_list' %}">Featured Basket</a>
-</section>
+<div class="intro">
+    <h1>Welcome to Highland-Fresh</h1>
+    <p>Explore our fresh products and place your order today!</p>
+    <div class="buttons">
+        <a href="{% url 'products:product_list' %}" class="btn-main">Shop Now</a>
+        <a href="{% url 'home:about_us' %}" class="btn-main">Learn More</a>
+        <a href="{% url 'account:sellers_page' %}" class="btn-main">Meet our Farmers</a>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Highland Produce</h1>
+    <a href="{% url 'products:product_list' %}">
+        <p>Go to Products</p>
+    </a>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="product-card">
+                <div class="product-image">
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                    <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
+                    {% endif %}
+                </div>
+                <div class="product-info">
+                    <h2>{{ product.name }}</h2>
+                    <p class="price">Ksh {{ product.price }}</p>
+                    <p class="availability">Available: {{ product.available_quantity }}</p>
+                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Details</a>
+                    <form action="{% url 'products:add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        <label for="quantity-{{ product.id }}">Quantity:</label>
+                        <input type="number" name="quantity" id="quantity-{{ product.id }}" min="1" max="{{ product.available_quantity }}" value="1" required>
+                        <button type="submit" class="btn btn-success">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if products.has_previous %}
+        <a href="?page={{ products.previous_page_number }}">Previous</a>
+        {% endif %}
+        <span class="current-page">Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+        {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+</div>
+
 <section>
     <h2>New in Market</h2>
     <a href="{% url 'products:product_list' %}">Latest Products</a>
 </section>
+
 <section class="delivery-section">
     <div class="container">
         <h2>Speed, Quality, and Delight: Kisii's Fresh Bounty Delivered to Your Doorstep</h2>
@@ -63,6 +103,4 @@ Home - Highland Fresh
         </div>
     </div>
 </section>
-
-
 {% endblock %}

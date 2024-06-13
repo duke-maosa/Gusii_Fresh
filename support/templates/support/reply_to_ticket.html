@@ -1,18 +1,20 @@
-<!-- support/templates/support/reply_to_ticket.html -->
+{% extends 'home/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reply to Ticket</title>
-</head>
-<body>
+{% block title %}
+Reply to Ticket
+{% endblock %}
+
+{% block content %}
+<div class="container">
     <h2>Reply to Ticket</h2>
     <form method="post">
         {% csrf_token %}
         <textarea name="message" required></textarea><br>
-        <button type="submit">Reply</button>
+        <button type="submit" class="btn btn-primary">Reply</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'support/css/reply_to_ticket.css' %}">
+{% endblock %}

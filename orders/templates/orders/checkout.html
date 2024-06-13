@@ -1,26 +1,26 @@
 {% extends 'home/base.html' %}
 
+{% block title %}
+Checkout - Highland Fresh
+{% endblock %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
-</head>
-<body>
+<div class="container">
     <h1>Checkout</h1>
     <form method="post">
         {% csrf_token %}
-        <ul>
+        <ul class="cart-items">
             {% for item in cart_items %}
                 <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Price: Ksh.{{ item.product.price }}</li>
             {% endfor %}
         </ul>
         <p>Total Cost: Ksh.{{ total_cost }}</p>
         <input type="hidden" name="action" value="checkout">
-        <button type="submit">Place Order</button>
+        <button type="submit" class="btn btn-primary">Place Order</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'orders/css/checkout.css' %}">
 {% endblock %}

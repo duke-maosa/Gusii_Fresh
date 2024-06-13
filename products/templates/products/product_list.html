@@ -4,31 +4,29 @@
 {% block content %}
 <div class="container">
     <h1>Highland Produce</h1>
-    <div class="row">
+    <div class="product-grid">
         {% for product in products %}
-        <div class="col-md-4">
-            <div class="product-card">
-                <div class="product-image">
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                    <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
-                    {% endif %}
-                </div>
-                <div class="product-info">
-                    <h2>{{ product.name }}</h2>
-                    <p class="price">Ksh {{ product.price }}</p>
-                    <p class="availability">Available: {{ product.available_quantity }}</p>
-                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Details</a>
-                    
-                    <!-- Add to Cart Form -->
-                    <form action="{% url 'products:add_to_cart' product.id %}" method="post">
-                        {% csrf_token %}
-                        <label for="quantity-{{ product.id }}">Quantity:</label>
-                        <input type="number" name="quantity" id="quantity-{{ product.id }}" min="1" max="{{ product.available_quantity }}" value="1" required>
-                        <button type="submit" class="btn btn-success">Add to Cart</button>
-                    </form>
-                </div>
+        <div class="product-card">
+            <div class="product-image">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% else %}
+                <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
+                {% endif %}
+            </div>
+            <div class="product-info">
+                <h2>{{ product.name }}</h2>
+                <p class="price">Ksh {{ product.price }}</p>
+                <p class="availability">Available: {{ product.available_quantity }}</p>
+                <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Details</a>
+                
+                <!-- Add to Cart Form -->
+                <form action="{% url 'products:add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <label for="quantity-{{ product.id }}">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity-{{ product.id }}" min="1" max="{{ product.available_quantity }}" value="1" required>
+                    <button type="submit" class="btn btn-success">Add to Cart</button>
+                </form>
             </div>
         </div>
         {% endfor %}
@@ -50,5 +48,5 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_list.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'static/products/css/productls.css' %}">
 {% endblock %}

@@ -4,10 +4,16 @@
 {% block title %}Edit Profile - Highland Fresh{% endblock %}
 
 {% block content %}
+<div class="edit-profile">
     <h2>Edit Profile</h2>
-    <form method="post">
+    <form method="post" class="edit-profile-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="btn">Save Changes</button>
     </form>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'account/css/edit_profile.css' %}">
 {% endblock %}

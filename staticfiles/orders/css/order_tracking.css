@@ -1,0 +1,43 @@
+/* order_tracking.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-info {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.order-info h2 {
+  font-size: 2rem;
+  color: #123332;
+  margin-bottom: 10px;
+}
+
+.order-info p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.order-info h3 {
+  font-size: 1.5rem;
+  color: #0a7a8c;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.order-info ul.order-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-info ul.order-items li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}

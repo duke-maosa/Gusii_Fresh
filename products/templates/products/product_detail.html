@@ -30,7 +30,7 @@
                         {% csrf_token %}
                         <label for="quantity">Quantity:</label>
                         <input type="number" name="quantity" id="quantity" min="1" max="{{ product.available_quantity }}" value="1" required>
-                        <button type="submit">Add to Cart</button>
+                        <button type="submit" class="btn">Add to Cart</button>
                     </form>
                     
                     <!-- Rate Product Form -->
@@ -45,7 +45,7 @@
                             {% endfor %}
                         </select>
                         <input type="hidden" name="next" value="{% url 'products:product_detail' product.id %}">
-                        <button type="submit">Submit Rating</button>
+                        <button type="submit" class="btn">Submit Rating</button>
                     </form>
                     
                     <!-- Rate Seller Form -->
@@ -59,7 +59,7 @@
                             <option value="{{ i }}">{{ i }}</option>
                             {% endfor %}
                         </select>
-                        <button type="submit">Submit Rating</button>
+                        <button type="submit" class="btn">Submit Rating</button>
                     </form>
                 </div>
             </div>
@@ -69,67 +69,5 @@
 {% endblock %}
 
 {% block extra_css %}
-<style>
-    .product-detail {
-        margin-top: 20px;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-    }
-
-    .product-images {
-        margin-bottom: 20px;
-    }
-
-    .product-images ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .product-images img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .product-info {
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-info h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-
-    .product-info p {
-        margin-bottom: 10px;
-    }
-
-    .product-info label {
-        font-weight: bold;
-    }
-
-    .product-info select {
-        margin-right: 10px;
-    }
-
-    .product-info button {
-        margin-top: 10px;
-        padding: 8px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .product-info button:hover {
-        background-color: #0056b3;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_detail.css' %}">
 {% endblock %}

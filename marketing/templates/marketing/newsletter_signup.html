@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Newsletter Signup</title>
-</head>
-<body>
+{% extends 'home/base.html' %}
+
+{% block title %}Newsletter Signup{% endblock %}
+
+{% block content %}
     <h1>Sign Up for Our Newsletter</h1>
     <form action="{% url 'newsletter_signup' %}" method="post">
         {% csrf_token %}
@@ -13,5 +10,8 @@
         <input type="email" id="email" name="email" required>
         <button type="submit">Sign Up</button>
     </form>
-</body>
-</html>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'marketing/css/newsletter.css' %}">
+{% endblock %}

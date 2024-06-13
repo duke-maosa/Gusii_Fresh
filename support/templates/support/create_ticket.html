@@ -1,5 +1,9 @@
 {% extends 'home/base.html' %}
 
+{% block title %}
+Create a New Ticket
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h1>Create a New Ticket</h1>
@@ -9,4 +13,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'support/css/create_ticket.css' %}">
 {% endblock %}

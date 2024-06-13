@@ -1,5 +1,7 @@
 {% extends 'home/base.html' %}
+
 {% block title %}Create/Edit Product - Highland Fresh{% endblock %}
+
 {% block content %}
 <section class="product-form-section">
     <div class="container">
@@ -11,4 +13,8 @@
         </form>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_form.css' %}">
 {% endblock %}

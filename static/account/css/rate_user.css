@@ -1,0 +1,143 @@
+/* General styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar {
+  background-color: #123332;
+  color: #FFD9BE;
+  padding: 20px 0;
+  position: relative;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-right: 5px;
+}
+
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+.nav-links li a {
+  color: #FFD9BE;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.nav-links li a:hover {
+  background-color: #0a7a8c;
+}
+
+.nav-links li a:hover::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-color: #FFD9BE;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.search-form {
+  margin-left: auto;
+  position: relative;
+}
+
+.search-form input[type="text"] {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-form button {
+  padding: 2px;
+  border: none;
+  background-color: transparent;
+  color: #FFD9BE;
+  position: absolute;
+  right: 10px;
+}
+
+footer {
+  background-color: #123332;
+  color: #ff9696;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Rate User Page Specific Styles */
+
+form {
+  margin-top: 20px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+  text-align: center;
+  color: #123332;
+  margin-bottom: 20px;
+}
+
+form .btn-primary {
+  background-color: #0a7a8c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form .btn-primary:hover {
+  background-color: #0c91a5;
+}
+
+form .form-group {
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: bold;
+  color: #123332;
+}
+
+form input[type="radio"] {
+  margin-right: 10px;
+}
+
+form input[type="radio"]:last-child {
+  margin-right: 0;
+}

@@ -1,44 +1,42 @@
 {% extends 'home/base.html' %}
 
 {% block title %}
-Order Tracking
+Order Tracking - Highland Fresh
 {% endblock %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Tracking</title>
-</head>
-<body>
+<div class="container">
     <h1>Order Tracking</h1>
     
-    <h2>Order #{{ order.id }}</h2>
-    <p>Order Date: {{ order.created_at }}</p>
-    <p>Status: {{ order.get_status_display }}</p>
-    <p>Total Cost: Ksh.{{ order.total_cost }}</p>
-    
-    <h3>Shipping Address</h3>
-    <p>{{ order.shipping_address }}</p>
+    <div class="order-info">
+        <h2>Order #{{ order.id }}</h2>
+        <p>Order Date: {{ order.created_at }}</p>
+        <p>Status: {{ order.get_status_display }}</p>
+        <p>Total Cost: Ksh.{{ order.total_cost }}</p>
+        
+        <h3>Shipping Address</h3>
+        <p>{{ order.shipping_address }}</p>
 
-    <h3>Tracking Information</h3>
-    {% if order.tracking_id %}
-        <p>Tracking ID: {{ order.tracking_id }}</p>
-        <p>You can track your order using the tracking ID above on the shipping carrier's website.</p>
-    {% else %}
-        <p>Tracking information is not available yet. Please check back later.</p>
-    {% endif %}
+        <h3>Tracking Information</h3>
+        {% if order.tracking_id %}
+            <p>Tracking ID: {{ order.tracking_id }}</p>
+            <p>You can track your order using the tracking ID above on the shipping carrier's website.</p>
+        {% else %}
+            <p>Tracking information is not available yet. Please check back later.</p>
+        {% endif %}
 
-    <h3>Order Items</h3>
-    <ul>
-        {% for item in order.order_items.all %}
-            <li>
-                {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: Ksh.{{ item.price }} - Total: Ksh.{{ item.total_price }}
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+        <h3>Order Items</h3>
+        <ul class="order-items">
+            {% for item in order.order_items.all %}
+                <li>
+                    {{ item.product.name }} - Quantity: {{ item.quantity }} - Price: Ksh.{{ item.price }} - Total: Ksh.{{ item.total_price }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'orders/css/order_tracking.css' %}">
 {% endblock %}

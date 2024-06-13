@@ -1,32 +1,46 @@
-{% extends "home/base.html" %}
+{% extends 'home/base.html' %}
+
+{% block title %}Cart - Highland Fresh{% endblock %}
 
 {% block content %}
-<h2>Cart</h2>
+<div class="container">
+    <h1>Cart</h1>
 
-{% if cart_items %}
-    <form method="post" action="{% url 'cart:view_cart' %}">
-        {% csrf_token %}
-        <ul>
-            {% for item in cart_items %}
-                <li>
-                    {{ item.product.name }} - 
-                    <form method="post" action="{% url 'cart:update_cart' item.id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.available_quantity }}" required>
-                        <button type="submit">Update</button>
-                    </form>
-                    <form method="post" action="{% url 'cart:remove_from_cart' item.id %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit">Remove</button>
-                    </form>
-                    x Ksh.{{ item.price }}
-                </li>
-            {% endfor %}
-        </ul>
-        <p>Total: Ksh.{{ total_cost }}</p>
-        <button type="submit">Place Order</button>
-    </form>
-{% else %}
-    <p>Your cart is empty.</p>
-{% endif %}
+    {% if cart_items %}
+        <form method="post" action="{% url 'cart:view_cart' %}">
+            {% csrf_token %}
+            <ul class="cart-items">
+                {% for item in cart_items %}
+                    <li class="cart-item">
+                        <div class="product-info">
+                            <div class="product-name">{{ item.product.name }}</div>
+                            <div class="product-actions">
+                                <form method="post" action="{% url 'cart:update_cart' item.id %}" class="cart-form">
+                                    {% csrf_token %}
+                                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.available_quantity }}" required class="cart-input">
+                                    <button type="submit" class="cart-button">Update</button>
+                                </form>
+                                <form method="post" action="{% url 'cart:remove_from_cart' item.id %}" class="cart-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="cart-button">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="product-price">Ksh.{{ item.price }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="cart-total">
+                <p>Total: Ksh.{{ total_cost }}</p>
+                <button type="submit" class="cart-button">Place Order</button>
+            </div>
+        </form>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'cart/css/cart.css' %}">
 {% endblock %}

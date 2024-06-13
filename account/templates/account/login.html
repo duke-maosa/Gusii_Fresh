@@ -3,14 +3,20 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
-{% block title %}Login - Highland Fresh{% endblock %}
+{% block title %}{% trans "Login" %} - Highland Fresh{% endblock %}
 
 {% block content %}
+<div class="login">
     <h2>{% trans "Login" %}</h2>
-    <form method="post">
+    <form method="post" class="login-form">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="hidden" name="next" value="{{ next }}">
-        <button type="submit">{% trans "Login" %}</button>
+        <button type="submit" class="btn">{% trans "Login" %}</button>
     </form>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'account/css/login.css' %}">
 {% endblock %}

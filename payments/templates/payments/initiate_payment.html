@@ -1,3 +1,6 @@
+
+{% endblock %}
+{% load static %}
 {% extends 'home/base.html' %}
 
 {% block title %}Initiate Payment - Highland Fresh{% endblock %}
@@ -7,4 +10,5 @@
     <h1>Initiate Payment</h1>
     <p>Redirecting to payment gateway...</p>
 </div>
-{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'payments/css/initiate_payments.css' %}">

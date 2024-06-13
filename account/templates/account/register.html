@@ -4,10 +4,15 @@
 {% block title %}Register - Highland Fresh{% endblock %}
 
 {% block content %}
+<div class="container">
     <h2>Register</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Register</button>
+        <button type="submit" class="btn btn-primary">Register</button>
     </form>
+</div>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'account/css/register.css' %}">
 {% endblock %}

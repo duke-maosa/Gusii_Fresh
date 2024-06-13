@@ -3,11 +3,17 @@
 
 {% block title %}Rate User - Highland Fresh{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/rate_user.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="container">
     <h2>Rate User</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Rate</button>
+        <button type="submit" class="btn btn-primary">Rate</button>
     </form>
+</div>
 {% endblock %}

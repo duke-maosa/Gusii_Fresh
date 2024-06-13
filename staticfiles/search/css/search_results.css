@@ -1,0 +1,83 @@
+/* Base styles for search results */
+.search-results {
+  padding: 20px;
+}
+
+/* Sort options form */
+.sort-options {
+  margin-bottom: 20px;
+}
+
+.sort-options form {
+  display: flex;
+  align-items: center;
+}
+
+.sort-options label {
+  margin-right: 10px;
+}
+
+.sort-options select {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.sort-options button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-options button:hover {
+  background-color: #0056b3;
+}
+
+/* Search results grid */
+.search-results-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+/* Individual sections (products, sellers, buyers) */
+.products, .sellers, .buyers {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.products h2, .sellers h2, .buyers h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.products ul, .sellers ul, .buyers ul {
+  list-style: none;
+  padding: 0;
+}
+
+.products ul li, .sellers ul li, .buyers ul li {
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-results-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .sort-options form {
+      flex-wrap: wrap;
+  }
+
+  .sort-options select, .sort-options button {
+      margin-top: 10px;
+  }
+}

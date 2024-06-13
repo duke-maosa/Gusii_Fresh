@@ -1,6 +1,10 @@
-{% extends "home/base.html" %}
-{% block title %}Notifications{% endblock %}
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}Notifications - Highland Fresh{% endblock %}
+
 {% block content %}
+<div class="notifications">
     <h1>Notifications</h1>
     <ul>
         {% for notification in notifications %}
@@ -10,4 +14,9 @@
             </li>
         {% endfor %}
     </ul>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'notifications/css/notifications.css' %}">
 {% endblock %}

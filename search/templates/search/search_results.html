@@ -1,5 +1,7 @@
 {% extends "home/base.html" %}
+{% load static %}
 {% block title %}Search Results{% endblock %}
+
 {% block content %}
 <div class="search-results container">
     <h1>Search Results for "{{ query }}"</h1>
@@ -29,7 +31,7 @@
                         <a href="{% url 'products:product_detail' product.id %}">
                             <div class="product-info">
                                 <span class="product-name">{{ product.name }}</span>
-                                <span class="product-price">${{ product.price }}</span>
+                                <span class="product-price">Ksh {{ product.price }}</span>
                             </div>
                         </a>
                     </li>
@@ -62,4 +64,7 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'search/css/search_results.css' %}">
 {% endblock %}
