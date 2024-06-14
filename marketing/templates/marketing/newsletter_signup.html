@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block title %}Newsletter Signup{% endblock %}
 
@@ -10,8 +11,4 @@
         <input type="email" id="email" name="email" required>
         <button type="submit">Sign Up</button>
     </form>
-{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'marketing/css/newsletter.css' %}">
 {% endblock %}

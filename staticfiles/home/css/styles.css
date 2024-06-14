@@ -9,6 +9,7 @@
 @import url('account/edit_profile.css');
 @import url('account/change_password.css');
 @import url('account/rate_user.css');
+@import url('account/sellerspage.css');
 @import url('cart/cart.css');
 @import url('marketing/newsletter.css');
 @import url('notifications/notifications.css');
@@ -20,7 +21,6 @@
 @import url('products/product_form.css');
 @import url('products/productls.css');
 @import url('search/search_results.css');
-@import url('sellers/sellers.css');
 @import url('support/create_ticket.css');
 @import url('support/reply_to_ticket.css');
 @import url('support/ticket_detail.css');

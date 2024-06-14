@@ -148,9 +148,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Define the path to your static files directories within each app
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR/ 'static'
 ]
-
 
 
 
@@ -163,7 +162,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/account/login/'
 # settings.py
 
-LOGIN_REDIRECT_URL = '/home:index/'
+LOGIN_REDIRECT_URL = '/account/profile/'
 
 LOGOUT_REDIRECT_URL = '/home/home/'
 

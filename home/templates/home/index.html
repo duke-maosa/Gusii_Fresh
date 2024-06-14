@@ -1,5 +1,8 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}">
+{% endblock %}
 
 {% block title %}
 Home - Highland Fresh
@@ -100,6 +103,22 @@ Home - Highland Fresh
                     <p>With real-time tracking and monitoring, we ensure your orders arrive right when you need them, keeping you informed every step of the way.</p>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-us-section">
+    <div class="container">
+        <h2>Why Us!</h2>
+        <div class="why-us-content">
+            <p><strong>Connecting Farmers and Consumers</strong></p>
+            <p>Our e-commerce platform acts as a vital bridge between Kisii's small-scale farmers and the urban consumers who crave their high-quality fruits and vegetables. By providing a centralized digital marketplace, we eliminate the inefficiencies and intermediaries that have long plagued the traditional agricultural supply chain in Kenya. This direct connection empowers both parties, ensuring that farmers receive fair prices for their labor and buyers can access the freshest, most flavorful produce.</p>
+
+            <p><strong>Optimized Logistics and Distribution</strong></p>
+            <p>Leveraging the power of technology, we have developed a streamlined logistics and distribution system that ensures Kisii's abundant agricultural bounty reaches customers across Kenya with unparalleled speed and efficiency. Our fleet of climate-controlled delivery vehicles, strategically located warehouses, and real-time tracking capabilities allow us to swiftly transport the farm-fresh produce from Kisii to urban centers, minimizing waste and maximizing freshness.</p>
+
+            <p><strong>Traceability and Transparency</strong></p>
+            <p>Transparency is a core tenet of our e-commerce platform. Through detailed product listings and supplier profiles, we provide customers with comprehensive information about the origin, cultivation practices, and journey of their produce. This traceability not only builds trust and fosters deeper connections between consumers and farmers but also allows us to ensure the highest standards of quality and food safety throughout the supply chain.</p>
         </div>
     </div>
 </section>

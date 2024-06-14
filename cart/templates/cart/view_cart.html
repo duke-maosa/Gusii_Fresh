@@ -18,7 +18,7 @@
                             <div class="product-quantity">
                                 <form method="post" action="{% url 'cart:remove_from_cart' item.id %}">
                                     {% csrf_token %}
-                                    <button type="submit" class="cart-button">Remove</button>
+                                    <button type="submit" class="btn btn-danger">Remove</button>
                                 </form>
                             </div>
                         </div>
@@ -32,9 +32,8 @@
             <form method="post" action="{% if order %}{% url 'orders:order_processing' order.id %}{% else %}#{% endif %}">
                 {% csrf_token %}
                 {% if order %}
-                    <button type="submit" class="cart-button">Place Order</button>
-                    <button type="submit" class="cart-button">Edit cart</button>
-                
+                    <button type="submit" class="btn btn-primary">Place Order</button>
+                    <button type="submit" class="btn btn-secondary">Edit Cart</button>
                 {% endif %}
             </form>
         </div>
@@ -42,8 +41,4 @@
         <p>Your cart is empty.</p>
     {% endif %}
 </div>
-{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'cart/css/cart.css' %}">
 {% endblock %}

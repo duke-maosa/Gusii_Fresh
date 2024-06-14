@@ -1,108 +1,26 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-}
 
-header {
-  background-color: #69a84f;
-  padding: 20px 0;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-}
-
-.search-bar input {
-  padding: 5px;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.search-bar button {
-  background-color: #4c7d3b;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.nav-links {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li {
-  display: inline;
-  margin-right: 20px;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-}
-
-.hero {
-  text-align: center;
-  padding: 50px 0;
-  background-color: #e2f0d9;
-}
-
-.hero h1 {
-  color: #69a84f;
-  font-size: 36px;
-}
-
-.hero p {
-  color: #333;
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.cta-buttons button {
-  background-color: #69a84f;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.cta-buttons button:hover {
-  background-color: #4c7d3b;
-}
-
-section {
-  padding: 20px;
-  text-align: center;
-}
-
-.farmers h2, .products h2 {
-  color: #69a84f;
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-footer {
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
+@import url('base.css');
+@import url('index.css');
+@import url('about.css');
+@import url('contact.css');
+@import url('account/register.css');
+@import url('account/profile.css');
+@import url('account/login.css');
+@import url('account/edit_profile.css');
+@import url('account/change_password.css');
+@import url('account/rate_user.css');
+@import url('account/sellerspage.css');
+@import url('cart/cart.css');
+@import url('marketing/newsletter.css');
+@import url('notifications/notifications.css');
+@import url('orders/checkout.css');
+@import url('orders/order_details.css');
+@import url('orders/order_tracking.css');
+@import url('products/delete_product.css');
+@import url('products/product_detail.css');
+@import url('products/product_form.css');
+@import url('products/productls.css');
+@import url('search/search_results.css');
+@import url('support/create_ticket.css');
+@import url('support/reply_to_ticket.css');
+@import url('support/ticket_detail.css');

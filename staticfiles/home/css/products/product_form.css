@@ -1,0 +1,96 @@
+/* product_form.css */
+
+/* Importing base styles */
+@import url('base.css');
+
+/* Product form specific styles */
+.product-form-section {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+}
+
+.product-form-section .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-form-section h2 {
+    font-size: 2.5rem;
+    color: #123332;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-form-section form {
+    margin-top: 20px;
+}
+
+.product-form-section form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #123332;
+    color: #FFD9BE;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-form-section form input[type="submit"]:hover {
+    background-color: #0a7a8c;
+}
+
+.product-form-section .form-group {
+    margin-bottom: 20px;
+}
+
+.product-form-section .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-form-section .form-group input[type="text"],
+.product-form-section .form-group textarea,
+.product-form-section .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.product-form-section .form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.product-form-section .form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23232332' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 24px;
+    padding-right: 30px;
+}
+
+.product-form-section .form-group select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 142, 0.5);
+}
+
+.product-form-section .form-group small {
+    color: #dc3545;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .product-form-section .container {
+        padding: 20px;
+    }
+}
