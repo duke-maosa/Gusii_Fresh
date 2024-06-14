@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from products.models import Product
 from .models import CartItem
 from orders.models import Order, OrderItem
@@ -13,19 +12,25 @@ from django.views.decorators.http import require_POST
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
     total_cost = sum(item.total_price() for item in cart_items)
+    order = None
 
     if request.method == 'POST':
         try:
             with transaction.atomic():
-                order = create_order(request.user, cart_items)
-                clear_cart(request.user)
-                return HttpResponseRedirect(reverse('orders:order_summary', args=[order.id]))
+                order = Order.objects.filter(user=request.user).first()
+                if not order:
+                    order = Order.objects.create(user=request.user)
+                # Add cart items to order or any other order processing here
+                messages.success(request, "Order placed successfully.")
         except Exception as e:
             messages.error(request, f"Error placing order: {str(e)}")
             return redirect('cart:view_cart')
 
-    return render(request, 'cart/view_cart.html', {'cart_items': cart_items, 'total_cost': total_cost})
-
+    return render(request, 'cart/view_cart.html', {
+        'cart_items': cart_items,
+        'total_cost': total_cost,
+        'order': order,
+    })
 def create_order(user, cart_items):
     try:
         total_cost = sum(item.total_price() for item in cart_items)
@@ -56,8 +61,7 @@ def add_to_cart(request, product_id):
         quantity = int(request.POST.get('quantity', 1))
 
         if quantity > product.available_quantity:
-            messages.error(request, 'Quantity exceeds available stock.')
-            return redirect('products:product_detail', product_id=product_id)
+            return JsonResponse({'error': 'Quantity exceeds available stock.'}, status=400)
 
         with transaction.atomic():
             cart_item, created = CartItem.objects.select_for_update().get_or_create(user=request.user, product=product)
@@ -67,15 +71,14 @@ def add_to_cart(request, product_id):
                 cart_item.quantity += quantity
 
             if cart_item.quantity > product.available_quantity:
-                messages.error(request, 'Quantity exceeds available stock.')
-                return redirect('products:product_detail', product_id=product_id)
+                return JsonResponse({'error': 'Quantity exceeds available stock.'}, status=400)
 
             cart_item.save()
 
-        messages.success(request, 'Item added to cart successfully.')
+        return JsonResponse({'message': 'Item added to cart successfully.'})
+    
     except Exception as e:
-        messages.error(request, f"Error adding item to cart: {str(e)}")
-    return redirect('cart:view_cart')
+        return JsonResponse({'error': f'Error adding item to cart: {str(e)}'}, status=500)
 
 @login_required
 def remove_from_cart(request, cart_item_id):

@@ -2,10 +2,22 @@ import uuid
 from django.db import models
 from account.models import CustomUser
 from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
+from django.conf import settings
+
 
 def validate_rating(value):
     if value < 0 or value > 5:
         raise ValidationError('Rating must be between 0 and 5.')
+    
+def get_default_user():
+    User = get_user_model()
+    default_user = User.objects.first()
+    if default_user:
+        return default_user.pk
+    else:
+        raise ValueError("No users found in the database to set as default")
+
 
 class Product(models.Model):
     CATEGORY_CHOICES = [
@@ -28,6 +40,7 @@ class Product(models.Model):
     sales_count = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=get_default_user)
     image = models.ImageField(upload_to='media/product_images/', blank=True, null=True)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=DEFAULT_CATEGORY)
 

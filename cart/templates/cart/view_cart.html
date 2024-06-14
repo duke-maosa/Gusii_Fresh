@@ -1,5 +1,5 @@
 {% extends 'home/base.html' %}
-{% load static%}
+{% load static %}
 {% block title %}Cart - Highland Fresh{% endblock %}
 
 {% block content %}
@@ -7,38 +7,37 @@
     <h1>Cart</h1>
 
     {% if cart_items %}
-        <form method="post" action="{% url 'cart:view_cart' %}">
-            {% csrf_token %}
-            <ul class="cart-items">
-                {% for item in cart_items %}
-                    <li class="cart-item">
-                        <div class="product-info">
-                            <div class="product-name">{{ item.product.name }}</div>
-                            <div class="product-actions">
-                                <form method="post" action="{% url 'cart:update_cart' item.id %}" class="cart-form">
-                                    {% csrf_token %}
-                                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.available_quantity }}" required class="cart-input">
-                                    <button type="submit" class="cart-button">Update</button>
-                                </form>
-                                <form method="post" action="{% url 'cart:remove_from_cart' item.id %}" class="cart-form">
+        <ul class="cart-items">
+            {% for item in cart_items %}
+                <li class="cart-item">
+                    <div class="product-info">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        <div class="product-details">
+                            <h4>{{ item.product.name }}</h4>
+                            <p>{{ item.product.description }}</p>
+                            <div class="product-quantity">
+                                <form method="post" action="{% url 'cart:remove_from_cart' item.id %}">
                                     {% csrf_token %}
                                     <button type="submit" class="cart-button">Remove</button>
                                 </form>
                             </div>
                         </div>
-                        <div class="product-price">Ksh.{{ item.price }}</div>
-                    </li>
-                {% endfor %}
-            </ul>
-            <div class="cart-total">
-                <p>Total: Ksh.{{ total_cost }}</p>
-                <form method="post" action="{% url 'orders:order_processing' %}">
-                    {% csrf_token %}
+                    </div>
+                    <div class="product-price">Ksh.{{ item.price }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="cart-total">
+            <p>Total: Ksh.{{ total_cost }}</p>
+            <form method="post" action="{% if order %}{% url 'orders:order_processing' order.id %}{% else %}#{% endif %}">
+                {% csrf_token %}
+                {% if order %}
                     <button type="submit" class="cart-button">Place Order</button>
-                </form>
+                    <button type="submit" class="cart-button">Edit cart</button>
                 
-            </div>
-        </form>
+                {% endif %}
+            </form>
+        </div>
     {% else %}
         <p>Your cart is empty.</p>
     {% endif %}

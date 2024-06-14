@@ -6,6 +6,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Order, OrderItem
 from cart.models import CartItem
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.db import transaction
+from .models import  Order, OrderItem
+
 @login_required
 def order_processing(request):
     if request.method == 'POST':
@@ -16,27 +21,39 @@ def order_processing(request):
                 messages.warning(request, "Your cart is empty. Please add some items.")
                 return redirect('cart:view_cart')
             
-            order = Order.objects.create(user=request.user)
-            for item in cart_items:
-                OrderItem.objects.create(
-                    order=order,
-                    product=item.product,
-                    quantity=item.quantity,
-                    price=item.product.price
-                )
-            
-            order.calculate_total_cost()
-            cart_items.delete()
-            
-            return redirect('orders:order_summary', order_id=order.id)
+            try:
+                with transaction.atomic():
+                    order = create_order(request.user, cart_items)
+                    cart_items.delete()
+                    messages.success(request, "Order placed successfully!")
+                    return redirect('orders:order_summary', order_id=order.id)
+            except Exception as e:
+                messages.error(request, f"Error placing order: {str(e)}")
+                return redirect('cart:view_cart')
         else:
-            # Handle other actions if necessary
             messages.error(request, "Invalid action.")
-            return redirect('cart:view_cart')  # Redirect to an appropriate page for invalid actions
+            return redirect('cart:view_cart')
     else:
         cart_items = CartItem.objects.filter(user=request.user)
-        total_cost = sum(item.product.price * item.quantity for item in cart_items)
+        total_cost = sum(item.total_price() for item in cart_items)
         return render(request, 'orders/checkout.html', {'cart_items': cart_items, 'total_cost': total_cost})
+
+def create_order(user, cart_items):
+    try:
+        total_cost = sum(item.total_price() for item in cart_items)
+        order = Order.objects.create(user=user, total_cost=total_cost)
+        OrderItem.objects.bulk_create([
+            OrderItem(
+                order=order,
+                product=item.product,
+                quantity=item.quantity,
+                price=item.product.price
+            ) for item in cart_items
+        ])
+        return order
+    except Exception as e:
+        raise e
+
 
 @login_required
 def order_summary(request, order_id):

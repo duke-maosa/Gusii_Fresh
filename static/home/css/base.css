@@ -1,9 +1,10 @@
-/* General styles */
-
+/* Global styles */
 body {
-  font-family: cursive;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+  background-color: #f0f0f0; /* Light gray background */
 }
 
 .container {
@@ -12,17 +13,25 @@ body {
   padding: 0 20px;
 }
 
+/* Navbar styles */
 .navbar {
-  background-color: #123332;
-  color: #FFD9BE;
-  padding: 20px 0;
+  background-color: #123332; /* Dark teal */
+  color: #FFD9BE; /* Light beige */
+  padding: 15px 0;
   position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow */
+  z-index: 100; /* Ensure navbar is above other content */
 }
 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: white;
   text-decoration: none;
+  transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.navbar-brand:hover {
+  color: #f8ac76; /* Light orange on hover */
 }
 
 .nav-links {
@@ -30,12 +39,12 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: right;
-  align-items: flex-start;
+  justify-content: flex-end; /* Align links to the right */
+  align-items: center; /* Vertically center links */
 }
 
 .nav-links li {
-  margin-right: 2px;
+  margin-right: 20px; /* Increased margin between links */
 }
 
 .nav-links li:last-child {
@@ -46,42 +55,34 @@ body {
   color: #FFD9BE;
   text-decoration: none;
   font-size: 1.2rem;
-  padding: 10px 20px;
+  padding: 10px 15px; /* Increased padding for better clickability */
   border-radius: 5px;
   position: relative;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Added transform transition */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .nav-links li a:hover {
-  background-color: #0a7a8c;
-  color: #f8ac76;
-  transform: translateY(-5px); /* Initial upward bounce */
-  animation: bounce 0.6s ease-in-out infinite; /* Apply the bounce animation */
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(-5px); /* Bounce back to initial position */
-  }
-  40%, 60% {
-    transform: translateY(-10px); /* Bounce upwards */
-  }
+  background-color: #0a7a8c; /* Dark teal on hover */
+  color: #f8ac76; /* Light orange on hover */
+  transform: translateY(-3px) scale(1.05); 
 }
 
 .nav-links li a:hover::before {
   content: '';
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background-color: #FFD9BE;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background-color: #FFD9BE; /* Light beige */
   z-index: -1;
   border-radius: 10px;
+  transform: scale(1.2); /* Increase size on hover */
+  opacity: 0; /* Fade out initially */
   transition: all 0.3s ease-in-out;
 }
 
-
+/* Search form */
 .search-form {
   margin-left: auto;
   position: relative;
@@ -90,98 +91,37 @@ body {
 }
 
 .search-form input[type="text"] {
-  padding: 8px 250px 8px 10px; 
+  padding: 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   outline: none;
-  transition: border 0.3s;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
 .search-form button {
-  padding: 8px;
+  padding: 10px 20px; /* Increased padding for better clickability */
   border: none;
-  background-color: transparent;
-  color: #FFD9BE;
-  position: absolute;
-  right:550px;
-  top:8px;
-  bottom: 0;
-  border-radius: 0 5px 5px 0;
+  background-color: #0a7a8c; /* Dark teal */
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .search-form button:hover {
-  background-color: #14cce9;
-  color: white;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: #14cce9; /* Light teal on hover */
+  transform: translateY(-3px) scale(1.05); 
 }
 
 .search-form input[type="text"]:focus {
-  border: 2px solid #0a7a8c; 
-  transition: border 0.3s; /* Transition effect */
-  box-shadow: 0 0 5px rgba(10, 122, 140, 0.5); 
-}
-
-
-
-/* Delivery Section Styles */
-
-.delivery-section {
-  margin-top: 50px;
-  padding: 40px 0;
-  background-color: #f8f9fa;
-}
-
-.delivery-section h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: #123332;
-  margin-bottom: 30px;
-}
-
-.feature-box {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-}
-
-.feature-box h3 {
-  font-size: 1.5rem;
-  color: #0a7a8c;
-  margin-bottom: 15px;
-}
-
-.feature-box .feature-image {
-  margin-bottom: 15px;
-}
-
-.feature-box .feature-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
-.feature-box p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-}
-
-.feature-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0a7a8c; /* Dark teal */
+  box-shadow: 0 0 5px rgba(10, 122, 140, 0.5);
 }
 
 /* Footer styles */
 .footer {
-  background-color: #123332;
-  color: #FFD9BE;
+  background-color: #123332; /* Dark teal */
+  color: #FFD9BE; /* Light beige */
   padding: 40px 0;
 }
 
@@ -189,13 +129,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
 }
 
 .footer-section {
@@ -207,7 +140,7 @@ body {
 .footer-section h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
-  color: #FFD9BE;
+  color: #FFD9BE; /* Light beige */
 }
 
 .footer-section p,
@@ -215,14 +148,13 @@ body {
 .footer-section li,
 .footer-section a {
   font-size: 1rem;
-  color: #FFD9BE;
+  color: #FFD9BE; /* Light beige */
   margin-bottom: 10px;
   text-decoration: none;
 }
 
 .footer-section ul {
   list-style: none;
-  text-decoration: none;
   padding: 0;
 }
 
@@ -232,7 +164,7 @@ body {
 
 .footer-section .social-links a {
   margin: 0 10px;
-  color: #FFD9BE;
+  color: #FFD9BE; /* Light beige */
   font-size: 1.2rem;
 }
 
@@ -250,15 +182,4 @@ body {
 .fas,
 .fab {
   margin-right: 10px;
-}
-
-/* Specific Footer Link Styles */
-.footer-section.links a {
-  text-decoration: none;
-  color: #FFD9BE;
-}
-
-.footer-section.links a:hover {
-  color: white;
-  text-decoration: none;
 }

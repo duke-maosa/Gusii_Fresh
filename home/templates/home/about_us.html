@@ -3,9 +3,6 @@
 
 {% block title %}About Us - Highland Fresh{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'home/css/about.css' %}">
-{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -47,6 +44,10 @@
         <h2>Contact Us</h2>
         <p>If you have any questions or inquiries, please don't hesitate to <a href="{% url 'home:contact_us' %}">contact us</a>. We're here to help!</p>
         <img src="{% static 'home/images/call.jpg' %}" alt="Contact Us" class="contact-image">
+    </section>
+    <section>
+        <h>Pro Link</h>
+        <a href="https://kisii-fresh-st35s84.gamma.site/" target="_blank">Want to Learn More?</a>
     </section>
 </div>
 {% endblock %}

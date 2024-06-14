@@ -1,153 +1,104 @@
-/* General styles */
-
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
+/* Base styles for index page */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px;
 }
+
+.welcomeh1 {
+  font-size: 2.5rem;
+  color: #123332;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .buttons {
   display: flex;
-  gap:50px; /* Space between the buttons */
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .btn-main {
-  background-color: #123332;
-  color: brown;
-  border: none;
+  background-color: #0a7a8c;
+  color: white;
   padding: 15px 30px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  margin: 0 10px;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-main:hover {
-  transform: translateY(-5px);
-  background-color: #0f2a26;
+  background-color: #14cce9;
+  transform: translateY(-3px) scale(1.05);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .btn-main {
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
+/* Section styles */
+.meet-farmers,
+.product-showcase,
+.new-products {
+  background-color: white;
+  padding: 40px 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 480px) {
-  .btn-main {
-    font-size: 0.9rem;
-    padding: 8px 15px;
-  }
-}
-
-
-.intro {
+.meet-farmers h2,
+.product-showcase h1,
+.new-products h2 {
+  font-size: 2rem;
+  color: #123332;
   text-align: center;
-  padding: 50px 0;
-  background: linear-gradient(135deg, #0a7a8c, #123332);
-  color: white;
-}
-
-.intro h1 {
-  font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.intro p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  
-}
-
-.btn-main {
-  padding: 15px 30px;
-  border: none;
-  background-color: #ff5733;
+.meet-farmers a,
+.new-products a {
+  display: inline-block;
+  background-color: #0a7a8c;
   color: white;
-  font-size: 1rem;
-  border-radius:9px;
-  transition: background-color 0.3s;
-  text-decoration: none;
-}
-
-.btn-main:hover {
-  background-color: #c44129;
-}
-
-.meet-farmers {
+  padding: 10px 20px;
+  border-radius: 5px;
   text-align: center;
-  margin: 50px 0;
-}
-.meet-farmers:hover {
-  color: #123332;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-
-.meet-farmers h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #123332;
-}
-
-.product-showcase {
-  margin: 50px 0;
-}
-
-.product-showcase h1 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #123332;
+.meet-farmers a:hover,
+.new-products a:hover {
+  background-color: #14cce9;
+  transform: translateY(-3px) scale(1.05);
 }
 
 .product-showcase .row {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
 }
 
 .product-card {
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
+  transition: transform 0.3s;
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.02);
 }
 
 .product-image img {
   width: 100%;
-  height: 200px; /* Fixed height for all product images */
-  object-fit: cover; /* Ensures the images cover the div without distorting */
-  border-bottom: 1px solid #ddd;
+  height: auto;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .product-info {
   padding: 20px;
+  text-align: center;
 }
 
 .product-info h2 {
@@ -156,136 +107,118 @@ body {
   margin-bottom: 10px;
 }
 
-.product-info p {
-  margin: 10px 0;
-}
-
 .product-info .price {
   font-size: 1.2rem;
-  color: #ff5733;
+  color: #0a7a8c;
+  margin-bottom: 10px;
 }
 
 .product-info .availability {
   font-size: 1rem;
-  color: #555;
+  color: #123332;
+  margin-bottom: 20px;
 }
 
 .product-info .btn {
-  margin-top: 15px;
+  background-color: #0a7a8c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.product-info .btn:hover {
+  background-color: #14cce9;
+  transform: translateY(-3px) scale(1.05);
+}
+
+.product-info form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
 }
 
 .pagination {
-  text-align: center;
-  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.pagination a {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.pagination a,
+.pagination span {
   margin: 0 5px;
+  padding: 10px 15px;
+  background-color: #0a7a8c;
+  color: white;
+  border-radius: 5px;
   text-decoration: none;
-  color: #123332;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .pagination a:hover {
-  background-color: #ff5733;
-  color: white;
+  background-color: #14cce9;
+  transform: translateY(-3px) scale(1.05);
 }
 
 .current-page {
-  font-size: 1rem;
-  margin: 0 10px;
+  background-color: #123332;
 }
 
-.new-products {
-  text-align: center;
-  margin: 50px 0;
-}
-
-.new-products h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #123332;
-}
-
-.new-products a {
-  font-size: 1.2rem;
-  color: #ff5733;
-  text-decoration: none;
-}
-
-.new-products a:hover {
-  text-decoration: underline;
-}
-
+/* Delivery section styles */
 .delivery-section {
-  padding: 50px 0;
-  background-color: #f8f9fa;
+  background-color: white;
+  padding: 40px 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.delivery-section .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.footer-content h2 {
+  font-size: 2rem;
+  color: #123332;
+  margin-bottom: 20px;
 }
 
 .feature-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
+  gap: 20px;
+  justify-content: center;
 }
 
 .feature-box {
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
   padding: 20px;
-  flex: 1;
-  min-width: 300px;
-  margin: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
+  transition: transform 0.3s;
 }
 
 .feature-box:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) scale(1.02);
 }
 
 .feature-image img {
   width: 100%;
-  height: 200px; /* Fixed height for all feature images */
-  object-fit: cover; /* Ensures the images cover the div without distorting */
-  border-radius: 5px;
+  height: auto;
+  border-bottom: 1px solid #e0e0e0;
   margin-bottom: 20px;
 }
 
-.feature-content h3 {
+.feature-box h3 {
   font-size: 1.5rem;
-  color: #0a7a8c;
-  margin-bottom: 15px;
+  color: #123332;
+  margin-bottom: 10px;
 }
 
-.feature-content p {
+.feature-box p {
   font-size: 1rem;
-  color: #555;
-}
-
-@media (max-width: 768px) {
-  .buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .product-showcase .row {
-    flex-direction: column;
-  }
-
-  .feature-grid {
-    flex-direction: column;
-  }
+  color: #123332;
 }
