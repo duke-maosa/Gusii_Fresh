@@ -4,6 +4,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #123332;
 }
 
 .contact-section h2 {
@@ -44,7 +45,7 @@
 }
 
 .contact-section form input[type="submit"]:hover {
-  background-color: #78cf3f;
+  background-color: burlywood;
 }
 
 .messages {

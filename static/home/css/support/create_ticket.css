@@ -3,7 +3,7 @@
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #123332;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -11,14 +11,14 @@
 .container h1 {
   font-size: 24px;
   margin-bottom: 15px;
-  color: #333;
+  color: #ffd9be;
 }
 
 form label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #555;
+  color: #ffd9be;
 }
 
 form input[type="text"],
@@ -37,8 +37,8 @@ form textarea {
 }
 
 form .btn-primary {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #102b09;
+  color: #ffd9be;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;

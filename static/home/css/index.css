@@ -11,6 +11,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #123332;
 }
 
 /* Welcome Section */
@@ -39,7 +40,8 @@ body {
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
-.buttons .btn-main:hover {
+.buttons .btn-main:hover 
+.meet-farmers .btn-main {
   background-color: #14cce9;
   color: white;
   transform: translateY(-3px) scale(1.05);

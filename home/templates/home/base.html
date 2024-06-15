@@ -5,30 +5,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'home/css/styles.css' %}"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}" >
+    {% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}">{% endblock %}
+    
     <title>{% block title %}Gusii-Highland Fresh{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <div class="container">
+            
                 <a href="{% url 'home:index' %}" class="navbar-brand">Gusii-Fresh</a>
                 <ul class="nav-links">
                     <li><a href="{% url 'home:index' %}">Home</a></li>
                     <li><a href="{% url 'home:about_us' %}">About Us</a></li>
                     <li><a href="{% url 'products:product_list' %}">HF Products</a></li>
                     <li><a href="{% url 'orders:order_processing' %}">Cart</a></li>
-                    {% if order %}
-                        <li><a href="{% url 'orders:order_processing' %}">Order Summary</a></li>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'account:profile' %}">Profile</a></li>
-                        <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
-                    {% else %}
-                        <li><a href="{% url 'account:user_login' %}?next={% url 'account:profile' %}">Login</a></li>
-                        <li><a href="{% url 'account:register' %}">Register</a></li>
-                    {% endif %}
+                {% if order %}
+                    <li><a href="{% url 'orders:order_processing' %}">Order Summary</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'account:profile' %}">Profile</a></li>
+                    <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'account:user_login' %}?next={% url 'account:profile' %}">Login</a></li>
+                    <li><a href="{% url 'account:register' %}">Register</a></li>
+                {% endif %}
                 </ul>
                 <div class="search-form">
                     <form action="{% url 'search:search' %}" method="get">
@@ -36,7 +38,7 @@
                         <button type="submit">Search</button>
                     </form>
                 </div>
-            </div>
+            
         </nav>
     </header>
     <main class="content">
@@ -50,7 +52,7 @@
         {% block content %}{% endblock %}
     </main>
     <footer class="footer">
-        <div class="container">
+        
             <div class="footer-content">
                 <div class="footer-section about">
                     <h3>About Us</h3>
@@ -85,7 +87,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2024 Gusii Fresh. All rights reserved.</p>
             </div>
-        </div>
+        
     </footer>
     
     
