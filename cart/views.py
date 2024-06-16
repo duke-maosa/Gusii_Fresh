@@ -55,6 +55,7 @@ def clear_cart(user):
 
 @require_POST
 @login_required
+
 def add_to_cart(request, product_id):
     try:
         product = get_object_or_404(Product, id=product_id)
@@ -76,9 +77,10 @@ def add_to_cart(request, product_id):
             cart_item.save()
 
         return JsonResponse({'message': 'Item added to cart successfully.'})
-    
+
     except Exception as e:
         return JsonResponse({'error': f'Error adding item to cart: {str(e)}'}, status=500)
+
 
 @login_required
 def remove_from_cart(request, cart_item_id):

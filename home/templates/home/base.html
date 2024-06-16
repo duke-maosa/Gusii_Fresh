@@ -5,91 +5,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}" >
-    {% block extra_css %}<link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}">{% endblock %}
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}">
+    {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}">
+    {% endblock %}
     <title>{% block title %}Gusii-Highland Fresh{% endblock %}</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
-            
-                <a href="{% url 'home:index' %}" class="navbar-brand">Gusii-Fresh</a>
-                <ul class="nav-links">
-                    <li><a href="{% url 'home:index' %}">Home</a></li>
-                    <li><a href="{% url 'home:about_us' %}">About Us</a></li>
-                    <li><a href="{% url 'products:product_list' %}">HF Products</a></li>
-                    <li><a href="{% url 'orders:order_processing' %}">Cart</a></li>
+            <a href="{% url 'home:index' %}" class="navbar-brand">Gusii-Fresh</a>
+            <div class="search-form">
+                <form action="{% url 'search:search' %}" method="get">
+                    <input type="text" name="q" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home:index' %}">Home</a></li>
+                <li><a href="{% url 'home:about_us' %}">About Us</a></li>
+                <li><a href="{% url 'products:product_list' %}">HF Products</a></li>
+                <li><a href="{% url 'orders:order_processing' %}">Cart</a></li>
                 {% if order %}
-                    <li><a href="{% url 'orders:order_processing' %}">Order Summary</a></li>
+                <li><a href="{% url 'orders:order_processing' %}">Order Summary</a></li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'account:profile' %}">Profile</a></li>
-                    <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
+                <li><a href="{% url 'account:profile' %}">Profile</a></li>
+                <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
                 {% else %}
-                    <li><button  class="nav-links" onclick="window.location.href='{% url 'account:user_login' %}'">Login</button></li>
-                    <li><a href="{% url 'account:register' %}">Register</a></li>
+                <li><button class="nav-links" onclick="window.location.href='{% url 'account:user_login' %}'">Login</button></li>
+                <li><a href="{% url 'account:register' %}">Register</a></li>
                 {% endif %}
-                </ul>
-                <div class="search-form">
-                    <form action="{% url 'search:search' %}" method="get">
-                        <input type="text" name="q" placeholder="Search...">
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
-            
+            </ul>
         </nav>
     </header>
     <main class="content">
         {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
         {% endif %}
         {% block content %}{% endblock %}
     </main>
     <footer class="footer">
-        
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <h3>About Us</h3>
-                    <p>Highland Fresh is dedicated to providing the freshest produce from Kisii, Kenya, directly to your doorstep.</p>
-                </div>
-                <div class="footer-section links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="{% url 'home:home' %}">Home</a></li>
-                        <li><a href="{% url 'products:product_list' %}">Products</a></li>
-                        <li><a href="https://kisii-fresh-st35s84.gamma.site/" target="_blank">About Us</a></li>
-                        <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
-                        <li><i class="fas fa-phone"></i> +254 72881 9040</li>
-                        <li><i class="fas fa-envelope"></i> info@plpgusiihighland.com</li>
-                    </ul>
-                </div>
-                <div class="footer-section social">
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>Highland Fresh is dedicated to providing the freshest produce from Kisii, Kenya, directly to your doorstep.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'home:home' %}">Home</a></li>
+                    <li><a href="{% url 'products:product_list' %}">Products</a></li>
+                    <li><a href="https://kisii-fresh-st35s84.gamma.site/" target="_blank">About Us</a></li>
+                    <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                    <li><i class="fas fa-phone"></i> +254 72881 9040</li>
+                    <li><i class="fas fa-envelope"></i> info@plpgusiihighland.com</li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Gusii Fresh. All rights reserved.</p>
-            </div>
-         
+        </div>
+        <div class="footer-bottom">
+            <p><strong>&copy; 2024 Gusii Fresh. All rights reserved.</strong></p>
+        </div>
     </footer>
-    
-    
 </body>
 </html>

@@ -4,7 +4,8 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background-color: #f0f0f0; /* Light gray background */
+  background-color: #123332; /* Dark teal background */
+  color: #FFD9BE; /* Light beige text */
 }
 
 .container {
@@ -18,9 +19,12 @@ body {
   background-color: #123332; /* Dark teal */
   color: #FFD9BE; /* Light beige */
   padding: 15px 0;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adding a subtle shadow */
   z-index: 100; /* Ensure navbar is above other content */
+  position: relative;
 }
 
 .navbar-brand {
@@ -39,19 +43,19 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-end; /* Align links to the right */
   align-items: center; /* Vertically center links */
 }
 
 .nav-links li {
-  margin-right: 20px; /* Increased margin between links */
+  margin-right: 20px; 
 }
 
 .nav-links li:last-child {
-  margin-right: 0;
+  margin-right: 6px;
 }
 
-.nav-links li a {
+.nav-links li a,
+.nav-links li button {
   color: #FFD9BE;
   text-decoration: none;
   font-size: 1.2rem;
@@ -59,15 +63,20 @@ body {
   border-radius: 5px;
   position: relative;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li button:hover {
   background-color: #0a7a8c; /* Dark teal on hover */
   color: #f8ac76; /* Light orange on hover */
   transform: translateY(-3px) scale(1.05); 
 }
 
-.nav-links li a:hover::before {
+.nav-links li a:hover::before,
+.nav-links li button:hover::before {
   content: '';
   position: absolute;
   top: -5px;
@@ -84,26 +93,30 @@ body {
 
 /* Search form */
 .search-form {
-  margin-left: auto;
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px; /* Limit the maximum width */
+  margin: 0 auto;
 }
 
 .search-form input[type="text"] {
+  flex-grow: 1;
   padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
   outline: none;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
 .search-form button {
-  padding: 10px 20px; /* Increased padding for better clickability */
+  padding: 10px 20px; 
   border: none;
   background-color: #0a7a8c; /* Dark teal */
   color: white;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }

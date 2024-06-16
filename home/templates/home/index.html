@@ -9,25 +9,25 @@ Home - Highland Fresh
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container"></div>
     <h1 class="welcomeh1">Welcome to Gusii-Fresh</h1>
     <p>Explore our fresh products and place your order today!</p>
     <div class="buttons">
         <button class="btn-main" onclick="window.location.href='{% url 'products:product_list' %}'">Shop Now</button>
         <button class="btn-main" onclick="window.location.href='{% url 'home:about_us' %}'">Learn More</button>
     </div>
-</div>
-
-<section class="container meet-farmers">
+<div>
+<section class="meet-farmers">
     <h2>Meet our Farmers</h2>
     <a href="{% url 'account:sellers_page' %}" class="btn-main">Meet our Farmers</a>
 </section>
 
-<section class="container product-showcase">
-    <h1>Highland Produce</h1>
-    <a href="{% url 'products:product_list' %}">
-        <p>Go to Products</p>
-    </a>
+<section class="product-showcase">
+    
+    <section class="new-products">
+        <h2>Highland Produce</h2>
+        <a href="{% url 'products:product_list' %}">Go Shop</a>
+    </section>
     <div class="row">
         {% for product in products %}
         <div class="col-md-4">
@@ -67,7 +67,7 @@ Home - Highland Fresh
     </div>
 </section>
 
-<section class="container new-products">
+<section class="new-products">
     <h2>New in Market</h2>
     <a href="{% url 'products:product_list' %}">Latest Products</a>
 </section>
@@ -108,7 +108,7 @@ Home - Highland Fresh
 </section>
 
 <section class="why-us-section">
-    <div class="container">
+    <div class="why-us-section-container">
         <h2>Why Us!</h2>
         <div class="why-us-content">
             <p><strong>Connecting Farmers and Consumers</strong></p>

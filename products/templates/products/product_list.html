@@ -9,10 +9,11 @@
 
     <!-- Add product button -->
     <a href="{% url 'products:create_product' %}" class="btn btn-primary">Create A Product</a>
+</div>
 
     <div class="product-grid">
         {% for product in products %}
-        <div class="product-card">
+        <div class="container">
             <div class="product-image">
                 {% if product.image %}
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -65,11 +66,11 @@
         <a href="?page={{ products.next_page_number }}">Next</a>
         {% endif %}
     </div>
-</div>
+
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_list.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/products/productls.css' %}">
 {% endblock %}
 
 {% block extra_js %}

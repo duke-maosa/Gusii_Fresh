@@ -3,7 +3,9 @@
 {% block title %}
 Order Details - Highland Fresh
 {% endblock %}
-
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/orders/order_details.css' %}">
+{% endblock %}
 {% block content %}
 <div class="container">
     <h1>Order Details</h1>

@@ -1,23 +1,25 @@
+@import url('base.css');
 /* General Styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  background-color: #123332;
+  background-color:#123332;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #123332;
+  
+  
 }
 
 /* Welcome Section */
 .welcomeh1 {
-  font-size: 2.5rem;
-  color: #FFD9BE;
+  font-size: 3.5rem;
+  color: #123332;
   text-align: center;
   margin-top: 20px;
 }
@@ -42,7 +44,7 @@ body {
 
 .buttons .btn-main:hover 
 .meet-farmers .btn-main {
-  background-color: burlywood;
+  background-color: white;
   color: #123332;
   transform: translateY(-3px) scale(1.05);
 }
@@ -58,11 +60,36 @@ body {
   color: #FFD9BE;
   margin-bottom: 20px;
 }
-
 .meet-farmers .btn-main {
-  background-color: #123332;
+  background-color: #0a7a8c;
   color: #FFD9BE;
+  border-radius: 5px;
+  padding: 15px;
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.meet-farmers .btn-main:hover {
+  background-color: #FFD9BE; 
+  color: #0a7a8c; 
+  animation: bounce 0.6s;  
+  transform: translateY(-5px);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); /* Initial position */
+  }
+  40% {
+    transform: translateY(-15px); /* Move up */
+  }
+  60% {
+    transform: translateY(-10px); /* Move down slightly */
+  }
+}
+
+
 
 /* Product Showcase */
 .product-showcase {
@@ -144,6 +171,7 @@ body {
   background-color: #14cce9;
   color: white;
   transform: translateY(-3px) scale(1.05);
+  
 }
 
 /* Pagination */
@@ -188,6 +216,7 @@ body {
 
 .new-products a:hover {
   color: #14cce9;
+  transform: translateY(-5px);
 }
 
 /* Delivery Section */
@@ -213,7 +242,7 @@ body {
   flex: 1;
   min-width: 300px;
   max-width: 400px;
-  margin: 10px;
+  margin: 5px;
   background-color: #123332;
   color: #FFD9BE;
   border-radius: 10px;
@@ -254,11 +283,13 @@ body {
   margin-top: 50px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #FFD9BE;
+  border-radius: 5px;
 }
 
 .why-us-section h2 {
   text-align: center;
-  color: #FFD9BE;
+  color: #123332;
   margin-bottom: 20px;
 }
 
@@ -269,8 +300,13 @@ body {
 
 .why-us-content p {
   margin-bottom: 15px;
-  line-height: 1.6;
+  line-height: 1.9;
+  color: #123332;
 }
+.why-us-section-container{
+  background-color:#FFD9BE;
+}
+
 
 
 /* Responsive Design */
