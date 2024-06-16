@@ -28,7 +28,7 @@
                     <li><a href="{% url 'account:profile' %}">Profile</a></li>
                     <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'account:user_login' %}?next={% url 'account:profile' %}">Login</a></li>
+                    <li><button  class="nav-links" onclick="window.location.href='{% url 'account:user_login' %}'">Login</button></li>
                     <li><a href="{% url 'account:register' %}">Register</a></li>
                 {% endif %}
                 </ul>
@@ -87,7 +87,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2024 Gusii Fresh. All rights reserved.</p>
             </div>
-        
+         
     </footer>
     
     

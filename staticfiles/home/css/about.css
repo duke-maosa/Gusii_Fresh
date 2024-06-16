@@ -6,7 +6,7 @@
 
 .about-section h1 {
   font-size: 2.5rem;
-  color: #123332;
+  color: #FFD9BE;
   margin-bottom: 20px;
  
 }
@@ -14,7 +14,7 @@
 .about-section p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: #FFD9BE;
 }
 
 .about-image {
@@ -32,7 +32,7 @@
 .mission-section h2,
 .vision-section h2 {
   font-size: 2rem;
-  color: #123332;
+  color: #FFD9BE;
   margin-bottom: 10px;
 }
 
@@ -40,7 +40,7 @@
 .vision-section p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: #FFD9BE;
 }
 
 .values-section {
@@ -49,7 +49,7 @@
 
 .values-section h2 {
   font-size: 2rem;
-  color: #123332;
+  color: #FFD9BE;
   margin-bottom: 10px;
 }
 
@@ -61,12 +61,12 @@
 .values-section li {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: #FFD9BE;
   margin-bottom: 10px;
 }
 
 .values-section li strong {
-  color: #123332;
+  color: #FFD9BE;
 }
 
 .team-section {
@@ -75,14 +75,14 @@
 
 .team-section h2 {
   font-size: 2rem;
-  color: #123332;
+  color: #FFD9BE;
   margin-bottom: 10px;
 }
 
 .team-section p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: #FFD9BE;
 }
 
 .team-image {
@@ -98,22 +98,22 @@
 
 .contact-section h2 {
   font-size: 2rem;
-  color: #123332;
+  color: #FFD9BE;
   margin-bottom: 10px;
 }
 
 .contact-section p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #555;
+  color: #FFD9BE;
 }
 
 .contact-section a {
-  color: #0a7a8c;
+  color: #FFD9BE;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .contact-section a:hover {
-  color: #065c73;
+  color: #FFD9BE;
 }

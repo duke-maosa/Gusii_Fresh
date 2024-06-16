@@ -7,27 +7,28 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from allauth.socialaccount.models import SocialAccount
 from .models import CustomUser, CustomUserRating
 from .forms import RegistrationForm, LoginForm, EditProfileForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from .forms import LoginForm
 
 def user_login(request):
+    next_url = request.GET.get('next', 'home:index')  # Set the default value for next_url
+
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginForm(request, data=request.POST)  # Use 'data' parameter for AuthenticationForm
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'Login successful.')
-                next_url = request.POST.get('next', '')  # Default to home page if 'next' not specified
-                return redirect(next_url)
-            else:
-                messages.error(request, 'Invalid username or password.')
+            user = form.get_user()
+            login(request, user)
+            messages.success(request, 'Login successful.')
+            next_url = request.POST.get('next', next_url)  # Use the existing next_url as default
+            return redirect(next_url)
         else:
-            messages.error(request, 'Please correct the errors below.')
+            messages.error(request, 'Invalid username or password.')
+            print(form.errors)  # Debug: Print form errors to console/log
     else:
         form = LoginForm()
 
-    next_url = request.GET.get('next', '')  # Retrieve next URL from GET parameters
     return render(request, 'account/login.html', {'form': form, 'next': next_url})
 
 
