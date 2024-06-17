@@ -96,7 +96,7 @@ body {
 }
 
 .search-form input[type="text"] {
-  padding: 10px;
+  padding:3px;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -104,7 +104,7 @@ body {
 }
 
 .search-form button {
-  padding: 10px 10px;
+  padding: 3px;
   border: none;
   background-color: #0a7a8c;
   color: white;
