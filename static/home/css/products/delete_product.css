@@ -2,7 +2,21 @@
 
 /* Importing base styles */
 @import url('base.css');
-
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color:#123332;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    
+    
+  }
 /* Delete product specific styles */
 .delete-product-section {
     padding: 40px 0;

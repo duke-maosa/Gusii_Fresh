@@ -23,19 +23,22 @@
                 </form>
             </div>
             <ul class="nav-links">
-                <li><a href="{% url 'home:index' %}">Home</a></li>
-                <li><a href="{% url 'home:about_us' %}">About Us</a></li>
-                <li><a href="{% url 'products:product_list' %}">HF Products</a></li>
-                <li><a href="{% url 'orders:order_processing' %}">Cart</a></li>
+                <li><button class="nav-links"><a href="{% url 'home:index' %}">Home</a></button></li>
+                
+                <li><button class="nav-links"><a href="{% url 'home:about_us' %}">About Us</a></button></li>
+
+                <li><button class="nav-links"><a href="{% url 'products:product_list' %}">HF Products</a></button></li>
+                <li><button class="nav-links"><a href="{% url 'orders:order_processing' %}">Cart</a></button></li>
+            
                 {% if order %}
                     <li><a href="{% url 'orders:order_processing' %}">Order Summary</a></li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'account:profile' %}">Profile</a></li>
-                    <li><a href="{% url 'account:user_logout' %}">Logout</a></li>
+                    <li><button class="nav-links" ><a href="{% url 'account:profile' %}">Profile</a></button> </li>
+                    <li><button class="nav-links" ><a href="{% url 'account:user_logout' %}">Logout</a></button></li>
                 {% else %}
-                    <li><button class="nav-links" onclick="window.location.href='{% url 'account:user_login' %}'">Login</button></li>
-                    <li><a href="{% url 'account:register' %}">Register</a></li>
+                    <li><button class="nav-links" onclick="window.location.href='{% url 'account:user_login' %}'">Login</button></li>                    
+                    <li><button class="nav-links"><a href="{% url 'account:register' %}">Register</a></button></li>
                 {% endif %}
             </ul>
         </nav>
@@ -59,10 +62,10 @@
             <div class="footer-section links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="{% url 'home:home' %}">Home</a></li>
+                    <li><a href="{% url 'home:home' %}">Go Home</a></li>
                     <li><a href="{% url 'products:product_list' %}">Products</a></li>
-                    <li><a href="https://kisii-fresh-st35s84.gamma.site/" target="_blank">About Us</a></li>
-                    <li><a href="{% url 'home:contact_us' %}">Contact</a></li>
+                    <li><a href="https://kisii-fresh-st35s84.gamma.site/" target="_blank">Learn More</a></li>
+                    <li><a href="{% url 'home:contact_us' %}">Get in Contact Now</a></li>
                 </ul>
             </div>
             <div class="footer-section contact">

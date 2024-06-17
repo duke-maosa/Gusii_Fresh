@@ -1,4 +1,7 @@
 /* About Us Page Styles */
+body{
+  background-color: #123332;
+}
 
 .container {
   margin-top: 20px;
@@ -105,15 +108,16 @@
 .contact-section p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #FFD9BE;
+  color: #123332;
 }
 
 .contact-section a {
-  color: #FFD9BE;
+  color: #123332;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .contact-section a:hover {
-  color: #FFD9BE;
+  color: gold;
+  background-color: #123332;
 }

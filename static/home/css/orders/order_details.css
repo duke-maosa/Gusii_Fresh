@@ -37,14 +37,14 @@ h1 {
 
 .order-info p {
   font-size: 1rem;
-  color: #FFD9BE;
+  color: #123332;
   margin: 5px 0;
 }
 
 .order-info h3 {
   margin-top: 20px;
   font-size: 1.2rem;
-  color: #FFD9BE;
+  color: #123332;
 }
 
 .order-items {
@@ -68,7 +68,7 @@ h1 {
   border: none;
   padding: 10px 20px;
   font-size: 1.2rem;
-  border-radius: 5px;
+  border-radius: 17px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
   text-align: center;
@@ -78,6 +78,7 @@ h1 {
   background-color: #14cce9;
   color: white;
   transform: translateY(-3px) scale(1.05);
+  border-radius: 17px;
 }
 
 /* Responsive Design */

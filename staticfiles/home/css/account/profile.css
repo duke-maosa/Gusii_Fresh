@@ -13,8 +13,10 @@ body {
   margin: 0 auto;
   padding: 2rem 0;
 }
-
-h2, h3 {
+h2{
+  color: #123332;
+}
+h3 {
   color: #FFD9BE;
 }
 
@@ -40,6 +42,11 @@ h2, h3 {
   border-right: 1px solid #FFD9BE;
   padding-right: 2rem;
 }
+.profile-details p{
+  color: white;
+
+
+}
 
 .profile-details h3, .profile-actions h3 {
   margin-bottom: 1rem;
@@ -56,6 +63,8 @@ h2, h3 {
 
 .profile-actions ul li {
   margin: 0.5rem 0;
+  box-shadow: white;
+  color: #123332;
 }
 
 .profile-actions ul li a {

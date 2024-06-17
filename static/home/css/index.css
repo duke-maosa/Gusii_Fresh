@@ -53,6 +53,7 @@ body {
 .meet-farmers {
   text-align: center;
   padding: 40px 0;
+  text-decoration: none;
 }
 
 .meet-farmers h2 {
@@ -63,7 +64,7 @@ body {
 .meet-farmers .btn-main {
   background-color: #0a7a8c;
   color: #FFD9BE;
-  border-radius: 5px;
+  border-radius: 9px;
   padding: 15px;
   border: none; 
   cursor: pointer; 
@@ -112,7 +113,7 @@ body {
 }
 
 .product-showcase a:hover {
-  color: #14cce9;
+  color: chartreuse;
 }
 
 .product-card {

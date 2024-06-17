@@ -1,5 +1,17 @@
 /* Login Page Specific Styles */
-
+body {
+  background-color: #123332;
+  color: #FFD9BE;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
 .login {
   margin-top: 50px;
 }
