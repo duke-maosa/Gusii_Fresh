@@ -164,7 +164,7 @@ LOGIN_URL = '/account/login/'
 
 LOGIN_REDIRECT_URL = '/account/profile/'
 
-LOGOUT_REDIRECT_URL = '/home/home/'
+LOGOUT_REDIRECT_URL = '/home/'
 
 AUTH_USER_MODEL = 'account.CustomUser'
 

@@ -9,14 +9,14 @@ Home - Highland Fresh
 {% endblock %}
 
 {% block content %}
-<div class="container"></div>
-    <h1 class="welcomeh1">Welcome to Gusii-Fresh</h1>
+
+    <h2>Welcome to Gusii-Fresh</h2>
     <p>Explore our fresh products and place your order today!</p>
     <div class="buttons">
         <button class="btn-main" onclick="window.location.href='{% url 'products:product_list' %}'">Shop Now</button>
         <button class="btn-main" onclick="window.location.href='{% url 'home:about_us' %}'">Learn More</button>
     </div>
-<div>
+
 <section class="meet-farmers">
     <h2>Meet our Farmers</h2>
     <a href="{% url 'account:sellers_page' %}" class="btn-main">Meet our Farmers</a>

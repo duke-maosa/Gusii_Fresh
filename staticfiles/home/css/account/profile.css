@@ -61,13 +61,13 @@ h2, h3 {
 .profile-actions ul li a {
   color: #FFD9BE;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .profile-actions ul li a:hover {
   color: #FFD700; /* Gold color */
   transform: translateY(-5px);
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Buttons and Links */
@@ -78,10 +78,10 @@ h2, h3 {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #ffa500; 
+  background-color: #FFA500; /* Orange color */
   transform: translateY(-5px);
 }
