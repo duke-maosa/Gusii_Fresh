@@ -2,7 +2,7 @@
 
 Gusii Fresh is an e-commerce platform dedicated to providing the freshest produce from Kisii, Kenya, directly to your doorstep. This README file will guide you through the setup, installation, and running of the project.
 
-![Gusii Fresh](path/to/your/image.png)
+![Gusii Fresh](media\media\product_images\images_1.jpeg)
 
 ## Table of Contents
 
@@ -170,5 +170,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 Thank you for using Gusii Fresh! If you have any questions, feel free to contact us at dukemaosa75@gmail.com.
 
-
-This `README.md` provides a comprehensive guide for setting up and running your Django project, including screenshots, installation instructions, and configuration details.
