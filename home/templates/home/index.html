@@ -9,117 +9,122 @@ Home - Highland Fresh
 {% endblock %}
 
 {% block content %}
-
-    <h2>Welcome to Gusii-Fresh</h2>
-    <p>Explore our fresh products and place your order today!</p>
-    <div class="buttons">
-        <button class="btn-main" onclick="window.location.href='{% url 'products:product_list' %}'">Shop Now</button>
-        <button class="btn-main" onclick="window.location.href='{% url 'home:about_us' %}'">Learn More</button>
-    </div>
-
-<section class="meet-farmers">
-    <h2>Meet our Farmers</h2>
-    <a href="{% url 'account:sellers_page' %}" class="btn-main">Meet our Farmers</a>
-</section>
-
-<section class="product-showcase">
-    
-    <section class="new-products">
-        <h2>Highland Produce</h2>
-        <a href="{% url 'products:product_list' %}">Go Shop</a>
+    <section class="meet-farmers">
+        <h2>Welcome to Gusii-Fresh</h2>
+        <p>Explore our fresh products and place your order today!</p>
+        <div class="buttons">
+            <button class="btn-main" onclick="window.location.href='{% url 'products:product_list' %}'"><span>Shop Now🛒</span></button>
+            <button class="btn-main" onclick="window.location.href='{% url 'home:about_us' %}'">Learn More</button>
+        </div>
     </section>
-    <div class="row">
-        {% for product in products %}
-        <div class="col-md-4">
-            <div class="product-card">
-                <div class="product-image">
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                    {% else %}
-                    <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
-                    {% endif %}
+
+    <section class="meet-farmers">
+        <h2>Meet our Farmers</h2>
+        <div class="btn-main">
+            <a href="{% url 'account:sellers_page' %}" class="btn-main">Meet our Farmers</a>
+        </div>
+    </section>
+
+    <section class="product-showcase">
+        
+        <section class="new-products">
+            <h2>Highland Produce</h2>
+            <a href="{% url 'products:product_list' %}"><span>Go Shop🛒</span></a>
+        </section>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4">
+                <div class="product-card">
+                    <div class="product-image">
+                        {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %}
+                        <img src="{% static 'images/no_image_available.png' %}" alt="No Image Available">
+                        {% endif %}
+                    </div>
+                    <div class="product-info">
+                        <h2>{{ product.name }}</h2>
+                        <p class="price">Ksh {{ product.price }}</p>
+                        <p class="availability">Available: {{ product.available_quantity }}</p>
+                        <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Details</a>
+                        <form action="{% url 'products:add_to_cart' product.id %}" method="post">
+                            {% csrf_token %}
+                            <label for="quantity-{{ product.id }}">Quantity:</label>
+                            <input type="number" name="quantity" id="quantity-{{ product.id }}" min="1" max="{{ product.available_quantity }}" value="1" required>
+                            <button type="submit" class="btn btn-success">Add to Cart</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <h2>{{ product.name }}</h2>
-                    <p class="price">Ksh {{ product.price }}</p>
-                    <p class="availability">Available: {{ product.available_quantity }}</p>
-                    <a href="{% url 'products:product_detail' product.id %}" class="btn btn-primary">View Details</a>
-                    <form action="{% url 'products:add_to_cart' product.id %}" method="post">
-                        {% csrf_token %}
-                        <label for="quantity-{{ product.id }}">Quantity:</label>
-                        <input type="number" name="quantity" id="quantity-{{ product.id }}" min="1" max="{{ product.available_quantity }}" value="1" required>
-                        <button type="submit" class="btn btn-success">Add to Cart</button>
-                    </form>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="current-page">Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+            {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="new-products">
+        <h2>New in Market</h2>
+        <a href="{% url 'products:product_list' %}">Latest Products</a>
+    </section>
+
+    <section class="delivery-section">
+        <div class="footer-content">
+            <h2>Speed, Quality, and Delight: Kisii's Fresh Bounty Delivered to Your Doorstep</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <div class="feature-content">
+                        <div class="feature-image">
+                            <img src="{% static 'home/images/swiftcar.jpg' %}" alt="Swift Delivery">
+                        </div>
+                        <h3>Swift Delivery</h3>
+                        <p>Our state-of-the-art logistics network and climate-controlled fleet race to deliver Kisii's freshest produce to your doorstep with unparalleled speed.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-content">
+                        <div class="feature-image">
+                            <img src="{% static 'home/images/farmers.jpg' %}" alt="Nationwide Coverage">
+                        </div>
+                        <h3>Nationwide Coverage</h3>
+                        <p>Unlock the bountiful agricultural riches of Kisii, now available in all major urban centers across Kenya through our strategically located warehouses and distribution hubs.</p>
+                    </div>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-content">
+                        <div class="feature-image">
+                            <img src="{% static 'home/images/timely.png' %}" alt="Timely Arrivals">
+                        </div>
+                        <h3>Timely Arrivals</h3>
+                        <p>With real-time tracking and monitoring, we ensure your orders arrive right when you need them, keeping you informed every step of the way.</p>
+                    </div>
                 </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
+    </section>
 
-    <div class="pagination">
-        {% if products.has_previous %}
-        <a href="?page={{ products.previous_page_number }}">Previous</a>
-        {% endif %}
-        <span class="current-page">Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
-        {% if products.has_next %}
-        <a href="?page={{ products.next_page_number }}">Next</a>
-        {% endif %}
-    </div>
-</section>
-
-<section class="new-products">
-    <h2>New in Market</h2>
-    <a href="{% url 'products:product_list' %}">Latest Products</a>
-</section>
-
-<section class="delivery-section">
-    <div class="footer-content">
-        <h2>Speed, Quality, and Delight: Kisii's Fresh Bounty Delivered to Your Doorstep</h2>
-        <div class="feature-grid">
-            <div class="feature-box">
-                <div class="feature-content">
-                    <div class="feature-image">
-                        <img src="{% static 'home/images/swiftcar.jpg' %}" alt="Swift Delivery">
-                    </div>
-                    <h3>Swift Delivery</h3>
-                    <p>Our state-of-the-art logistics network and climate-controlled fleet race to deliver Kisii's freshest produce to your doorstep with unparalleled speed.</p>
-                </div>
+    <section class="why-us-section">
+        <div class="why-us-section-container">
+            <h2>Why Us!</h2>
+            <div class="wu-feature-box">
+                <p><strong>Connecting Farmers and Consumers</strong></p>
+                <p>Our e-commerce platform acts as a vital bridge between Kisii's small-scale farmers and the urban consumers who crave their high-quality fruits and vegetables. By providing a centralized digital marketplace, we eliminate the inefficiencies and intermediaries that have long plagued the traditional agricultural supply chain in Kenya. This direct connection empowers both parties, ensuring that farmers receive fair prices for their labor and buyers can access the freshest, most flavorful produce.</p>
             </div>
-            <div class="feature-box">
-                <div class="feature-content">
-                    <div class="feature-image">
-                        <img src="{% static 'home/images/farmers.jpg' %}" alt="Nationwide Coverage">
-                    </div>
-                    <h3>Nationwide Coverage</h3>
-                    <p>Unlock the bountiful agricultural riches of Kisii, now available in all major urban centers across Kenya through our strategically located warehouses and distribution hubs.</p>
-                </div>
+            <div class="wu-feature-box">
+                <p><strong>Optimized Logistics and Distribution</strong></p>
+                <p>Leveraging the power of technology, we have developed a streamlined logistics and distribution system that ensures Kisii's abundant agricultural bounty reaches customers across Kenya with unparalleled speed and efficiency. Our fleet of climate-controlled delivery vehicles, strategically located warehouses, and real-time tracking capabilities allow us to swiftly transport the farm-fresh produce from Kisii to urban centers, minimizing waste and maximizing freshness.</p>
             </div>
-            <div class="feature-box">
-                <div class="feature-content">
-                    <div class="feature-image">
-                        <img src="{% static 'home/images/timely.png' %}" alt="Timely Arrivals">
-                    </div>
-                    <h3>Timely Arrivals</h3>
-                    <p>With real-time tracking and monitoring, we ensure your orders arrive right when you need them, keeping you informed every step of the way.</p>
-                </div>
+            <div class="wu-feature-box">
+                <p><strong>Traceability and Transparency</strong></p>
+                <p>Transparency is a core tenet of our e-commerce platform. Through detailed product listings and supplier profiles, we provide customers with comprehensive information about the origin, cultivation practices, and journey of their produce. This traceability not only builds trust and fosters deeper connections between consumers and farmers but also allows us to ensure the highest standards of quality and food safety throughout the supply chain.</p>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="why-us-section">
-    <div class="why-us-section-container">
-        <h2>Why Us!</h2>
-        <div class="why-us-content">
-            <p><strong>Connecting Farmers and Consumers</strong></p>
-            <p>Our e-commerce platform acts as a vital bridge between Kisii's small-scale farmers and the urban consumers who crave their high-quality fruits and vegetables. By providing a centralized digital marketplace, we eliminate the inefficiencies and intermediaries that have long plagued the traditional agricultural supply chain in Kenya. This direct connection empowers both parties, ensuring that farmers receive fair prices for their labor and buyers can access the freshest, most flavorful produce.</p>
-
-            <p><strong>Optimized Logistics and Distribution</strong></p>
-            <p>Leveraging the power of technology, we have developed a streamlined logistics and distribution system that ensures Kisii's abundant agricultural bounty reaches customers across Kenya with unparalleled speed and efficiency. Our fleet of climate-controlled delivery vehicles, strategically located warehouses, and real-time tracking capabilities allow us to swiftly transport the farm-fresh produce from Kisii to urban centers, minimizing waste and maximizing freshness.</p>
-
-            <p><strong>Traceability and Transparency</strong></p>
-            <p>Transparency is a core tenet of our e-commerce platform. Through detailed product listings and supplier profiles, we provide customers with comprehensive information about the origin, cultivation practices, and journey of their produce. This traceability not only builds trust and fosters deeper connections between consumers and farmers but also allows us to ensure the highest standards of quality and food safety throughout the supply chain.</p>
-        </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
