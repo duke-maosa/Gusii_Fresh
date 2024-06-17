@@ -2,7 +2,7 @@
 
 Gusii Fresh is an e-commerce platform dedicated to providing the freshest produce from Kisii, Kenya, directly to your doorstep. This README file will guide you through the setup, installation, and running of the project.
 
-![Gusii Fresh](media\media\product_images\images_1.jpeg)
+![Gusii Fresh](path/to/your/image.jpeg/png)
 
 ## Table of Contents
 
