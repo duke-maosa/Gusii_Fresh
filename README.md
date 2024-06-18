@@ -8,6 +8,7 @@ Gusii Fresh is an e-commerce platform dedicated to providing the freshest produc
 
 - [Project Overview](#project-overview)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -30,6 +31,17 @@ Gusii Fresh is an online marketplace aimed at connecting local farmers with cust
 - Review and rating system
 - Notifications and alerts
 - Secure payments integration
+
+## Screenshots
+
+### Home Page
+![Home Page](path/to/home_page_screenshot.png)
+
+### Product Page
+![Product Page](path/to/product_page_screenshot.png)
+
+### Cart Page
+![Cart Page](path/to/cart_page_screenshot.png)
 
 ## Technologies Used
 
