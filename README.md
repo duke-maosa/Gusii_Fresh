@@ -35,13 +35,21 @@ Gusii Fresh is an online marketplace aimed at connecting local farmers with cust
 ## Screenshots
 
 ### Home Page
-![Home Page](path/to/home_page_screenshot.png)
+![Home Page](media/GHF%20page/homepage.png)
 
 ### Product Page
-![Product Page](path/to/product_page_screenshot.png)
+![Product Page](media/GHF%20page/product-list.png)
 
 ### Cart Page
-![Cart Page](path/to/cart_page_screenshot.png)
+![Cart Page](media/GHF%20page/check-out.png)
+
+### Login Page
+![Log In](media/GHF%20page/login.png)
+
+### Edit Profile
+![Edit Profile](media/GHF%20page/change-password.png)
+
+
 
 ## Technologies Used
 
