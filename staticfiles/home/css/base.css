@@ -33,9 +33,22 @@ body {
 }
 
 .navbar-brand:hover {
-  color: #f8ac76;
+  color: #0aaa6a;
+  animation: bounce 0.6s;  
   transform: translateY(-5px);
 }
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); 
+  }
+  40% {
+    transform: translateY(-15px); 
+  }
+  60% {
+    transform: translateY(-10px); 
+  }
+}
+
 
 .nav-links {
   list-style-type: none;
@@ -205,6 +218,11 @@ body {
 .footer-bottom {
   text-align: center;
   margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  color: #f0f0f0;
   font-size: 0.9rem;
 }
 

@@ -1,7 +1,5 @@
-/* product_form.css */
-
 /* Importing base styles */
-@import url('base.css');
+@import url('home/css/base.css');
 
 /* Product form specific styles */
 .product-form-section {

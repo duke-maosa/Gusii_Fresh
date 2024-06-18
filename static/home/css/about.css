@@ -115,9 +115,12 @@ body{
   color: #123332;
   text-decoration: none;
   transition: color 0.3s;
+
 }
 
 .contact-section a:hover {
   color: gold;
-  background-color: #123332;
+  background-color: #0aaa6a;
+  border-radius: 9px;
+  padding: 5px;
 }

@@ -17,12 +17,7 @@ body {
 }
 
 /* Welcome Section */
-.welcomeh1 {
-  font-size: 3.5rem;
-  color: #123332;
-  text-align: center;
-  margin-top: 20px;
-}
+
 
 .buttons {
   display: flex;
@@ -72,21 +67,21 @@ body {
 }
 
 .meet-farmers .btn-main:hover {
-  background-color: #FFD9BE; 
-  color: #0a7a8c; 
+  background-color: #0aaa6a; 
+  color: white; 
   animation: bounce 0.6s;  
   transform: translateY(-5px);
 }
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0); /* Initial position */
+    transform: translateY(0); 
   }
   40% {
-    transform: translateY(-15px); /* Move up */
+    transform: translateY(-15px); 
   }
   60% {
-    transform: translateY(-10px); /* Move down slightly */
+    transform: translateY(-10px); 
   }
 }
 
@@ -277,6 +272,7 @@ body {
   font-size: 1rem;
   color: #FFD9BE;
 }
+
 /* Why Us! Section */
 .why-us-section {
   background-color: #123332;
@@ -284,13 +280,13 @@ body {
   margin-top: 50px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #FFD9BE;
+  color: white;
   border-radius: 5px;
 }
 
 .why-us-section h2 {
   text-align: center;
-  color: #123332;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -302,10 +298,45 @@ body {
 .why-us-content p {
   margin-bottom: 15px;
   line-height: 1.9;
-  color: #123332;
+  color: #FFD9BE;
 }
 .why-us-section-container{
-  background-color:#FFD9BE;
+  background-color: #0a7a8c;
+  border-radius: 17px;
+  color: white;
+  
+}
+.why-us-section-container:hover{
+  background-color:#0aaa6a;
+  border-radius: 17px;
+  color: #FFD9BE;
+}
+
+.wu-feature-box{
+  padding: 17px;
+  flex: 1;
+  width: auto;
+  min-width: 300px;
+  margin: 5px;
+  background-color: #123332;
+  color: #FFD9BE;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+}
+.wu-feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  color: #FFD9BE;
+}
+
+.wu-feature-box p {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #FFD9BE;
 }
 
 

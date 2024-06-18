@@ -221,6 +221,11 @@ body {
   font-size: 0.9rem;
 }
 
+.footer-bottom p {
+  color: #f0f0f0;
+  font-size: 0.9rem;
+}
+
 /* Font Awesome Integration */
 .fas,
 .fab {

@@ -298,17 +298,21 @@ body {
 .why-us-content p {
   margin-bottom: 15px;
   line-height: 1.9;
-  color: #123332;
+  color: #FFD9BE;
 }
 .why-us-section-container{
   background-color: #0a7a8c;
   border-radius: 17px;
+  color: white;
   
 }
 .why-us-section-container:hover{
   background-color:#0aaa6a;
   border-radius: 17px;
-  color: #123332;
+  color: #FFD9BE;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .wu-feature-box{
@@ -316,7 +320,7 @@ body {
   flex: 1;
   width: auto;
   min-width: 300px;
-  margin: 5px;
+  margin: 7px;
   background-color: #123332;
   color: #FFD9BE;
   border-radius: 10px;
@@ -329,7 +333,15 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  color: #FFD9BE;
 }
+
+.wu-feature-box p {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #FFD9BE;
+}
+
 
 
 /* Responsive Design */
